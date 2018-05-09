@@ -8,10 +8,21 @@ body{
     color: #fff;
 }
 
+
+
 a {
     display: flex;
     color: #fff;
     justify-content: center;
     padding: 30px;
     size: 30px;
+}
+
+h1{
+    margin: auto;
+}
+
+#images {
+    width: 850px;
+    margin: auto;
 }
