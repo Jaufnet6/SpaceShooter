@@ -1,0 +1,17 @@
+*{
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #314178;
+    font-family: Trebuchet MS;
+    color: #fff;
+}
+
+a {
+    display: flex;
+    color: #fff;
+    justify-content: center;
+    padding: 30px;
+    size: 30px;
+}
