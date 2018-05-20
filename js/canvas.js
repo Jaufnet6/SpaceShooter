@@ -123,6 +123,23 @@ var Canvas = Class.extend({
 				this.clearRect(0, 0, this.width, this.height);
 			};
 
+            ctx.drawSprite = function(sp, x, y) {
+                // draw part of spritesheet to canvas
+                this.drawImage(sp.img, sp.x, sp.y, sp.w, sp.h, x, y, sp.w, sp.h);
+            };
+
+            ctx.drawBullet = function(bullet) {
+                // set the current fillstyle and draw bullet
+                this.fillStyle = bullet.color;
+                this.fillRect(bullet.x, bullet.y, bullet.width, bullet.height);
+            };
+
+
+
+
+
+
+
 			// return augmented drawing context
 			return ctx;
 		})(this.canvas.getContext("2d"));

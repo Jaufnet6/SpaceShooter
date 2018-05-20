@@ -24,20 +24,10 @@ var GameState = State.extend({
     init: function (game) {
         this._super(game);
 
-        // init all the sprite
-        var img = new Image();
-        img.addEventListener("load", function() {
-            alSprite = [
-                [new Sprite(this, 0, 0, 22, 16), new Sprite(this, 0, 16, 22, 16)],
-                [new Sprite(this, 22, 0, 16, 16), new Sprite(this, 22, 16, 16, 16)],
-                [new Sprite(this, 38, 0, 24, 16), new Sprite(this, 38, 16, 24, 16)]
-            ];
-            taSprite = new Sprite(this, 62, 0, 22, 16);
-            ciSprite = new Sprite(this, 84, 8, 36, 24);
 
-        })
 
-        img.src = "res/invaders.png";
+
+
 
         // score lives variables
         this.lives = 3;
@@ -58,8 +48,11 @@ var GameState = State.extend({
         tank = {
             sprite: taSprite,
             x: (this.canvasWidth - taSprite.w) / 2,
-            y: this.canvasHeight - (30 + taSprite.h)
+            y: this.canvasHeight - (30 + taSprite.h),
+            visible:true
         };
+
+
         // initatie bullet array
         bullets = [];
         // create the cities object (and canvas)
@@ -149,8 +142,8 @@ var GameState = State.extend({
      * @param  {InputHandeler} input keeps track of all pressed keys
      */
     handleInputs: function(input) {
-        // only update ship orientation and velocity if it's visible
-        if (!this.ship.visible) {
+        // only update tank orientation and velocity if it's visible
+        if (!tank.visible) {
             if (input.isPressed("spacebar")) {
                 // change state if game over
                 if (this.gameOver) {
@@ -158,10 +151,25 @@ var GameState = State.extend({
                     this.game.stateVars.score = this.score;
                     return;
                 }
-                this.ship.visible = true;
+                this.tank.visible = true;
             }
             return;
         }
+        // update tank position depending on pressed keys
+        if (input.isDown("left")) { // Left
+            tank.x -= 4;
+        }
+        if (input.isDown("right")) { // Right
+            tank.x += 4;
+        }
+
+
+        // append new bullet to the bullet array if spacebar is
+        // pressed
+        if (input.isPressed("spacebar")) { // Space
+            bullets.push(new Bullet(tank.x + 10, tank.y, -8, 2, 6, "#fff"));
+        }
+
     },
 
 
@@ -186,26 +194,16 @@ var GameState = State.extend({
     update: function() {
         // update the frame count
         frames++;
-        // update tank position depending on pressed keys
-        if (input.isDown(37)) { // Left
-            tank.x -= 4;
-        }
-        if (input.isDown(39)) { // Right
-            tank.x += 4;
-        }
+
         // keep the tank sprite inside of the canvas
-        tank.x = Math.max(Math.min(tank.x, display.width - (30 + taSprite.w)), 30);
-        // append new bullet to the bullet array if spacebar is
-        // pressed
-        if (input.isPressed(32)) { // Space
-            bullets.push(new Bullet(tank.x + 10, tank.y, -8, 2, 6, "#fff"));
-        }
+        tank.x = Math.max(Math.min(tank.x, this.canvasWidth - (30 + taSprite.w)), 30);
+
         // update all bullets position and checks
         for (var i = 0, len = bullets.length; i < len; i++) {
             var b = bullets[i];
             b.update();
             // remove bullets outside of the canvas
-            if (b.y + b.height < 0 || b.y > display.height) {
+            if (b.y + b.height < 0 || b.y > this.canvasHeight) {
                 bullets.splice(i, 1);
                 i--;
                 len--;
@@ -234,8 +232,8 @@ var GameState = State.extend({
                     this.gameOver = true;
 
                 }
-                tank.x =  (display.width - taSprite.w) / 2;
-                tank.y = display.height - (30 + taSprite.h)
+                tank.x =  (this.canvasWidth- taSprite.w) / 2;
+                tank.y = this.canvasHeight - (30 + taSprite.h)
                 this.tank.visible = false
 
             }
@@ -293,7 +291,7 @@ var GameState = State.extend({
         // update the aliens at the current movement frequence
         if (frames % lvFrame === 0) {
             spFrame = (spFrame + 1) % 2;
-            var _max = 0, _min = display.width;
+            var _max = 0, _min = this.canvasWidth;
             // iterate through aliens and update postition
             for (var i = 0, len = aliens.length; i < len; i++) {
                 var a = aliens[i];
@@ -304,7 +302,7 @@ var GameState = State.extend({
                 _min = Math.min(_min, a.x);
             }
             // check if aliens should move down and change direction
-            if (_max > display.width - 30 || _min < 30) {
+            if (_max > this.canvasWidth - 30 || _min < 30) {
                 // mirror direction and update position
                 dir *= -1;
                 for (var i = 0, len = aliens.length; i < len; i++) {
@@ -319,25 +317,25 @@ var GameState = State.extend({
     /**
      * Render the game state to the canvas
      */
-    render: function () {
+    render: function (contx) {
 
 
-        display.clear(); // clear the game canvas
+        contx.clearAll();// clear the game canvas
         // draw all aliens
         for (var i = 0, len = aliens.length; i < len; i++) {
             var a = aliens[i];
-            display.drawSprite(a.sprite[spFrame], a.x, a.y);
+            contx.drawSprite(a.sprite[spFrame], a.x, a.y);
         }
         // save context and draw bullet then restore
-        display.ctx.save();
+        contx.save();
         for (var i = 0, len = bullets.length; i < len; i++) {
-            display.drawBullet(bullets[i]);
+            contx.drawBullet(bullets[i]);
         }
-        display.ctx.restore();
+        contx.restore();
         // draw the city graphics to the canvas
-        display.ctx.drawImage(cities.canvas, 0, cities.y);
+        contx.drawImage(cities.canvas, 0, cities.y);
         // draw the tank sprite
-        display.drawSprite(tank.sprite, tank.x, tank.y);
+        contx.drawSprite(tank.sprite, tank.x, tank.y);
     }
 
 

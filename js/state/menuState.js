@@ -23,7 +23,7 @@ var MenuState = State.extend({
 
         ctx.clearAll();
 
-        ctx.vectorText("BAMBOOZLED AGAIN", 6, null,180)
+        ctx.vectorText("Spaceshooters", 6, null,180)
         ctx.vectorText("push space to play", 2, null, 260);
 
     }

@@ -13,6 +13,8 @@ var Game = Class.extend({
      * Constructor
      */
     init: function() {
+
+
         // public important members used for update and rendering
         this.canvas = new Canvas(504, 600);
 
@@ -26,6 +28,23 @@ var Game = Class.extend({
         // set stroke style to white, since canvas has black
         // bacground
         this.canvas.ctx.strokeStyle = "#fff";
+
+        // init all the sprite
+        var img = new Image();
+
+        img.addEventListener("load", function() {
+            alSprite = [
+                [new Sprite(this, 0, 0, 22, 16), new Sprite(this, 0, 16, 22, 16)],
+                [new Sprite(this, 22, 0, 16, 16), new Sprite(this, 22, 16, 16, 16)],
+                [new Sprite(this, 38, 0, 24, 16), new Sprite(this, 38, 16, 24, 16)]
+            ];
+            taSprite = new Sprite(this, 62, 0, 22, 16);
+            ciSprite = new Sprite(this, 84, 8, 36, 24);
+
+        });
+
+        img.src = "res/invaders.png";
+
 
         // declate variables used for managing states
         this.currentState = null;
@@ -64,4 +83,6 @@ var Game = Class.extend({
             self.currentState.render(self.canvas.ctx);
         });
     }
+
+
 });
