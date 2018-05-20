@@ -94,10 +94,10 @@ function Sprite(img, x, y, w, h) {
 	this.h = h;
 };
 
-
-/**
+/*
+/!**
  * InputHandeler class, handle and log pressed keys
- */
+ *!/
 function InputHandeler() {
 	this.down = {};
 	this.pressed = {};
@@ -112,20 +112,20 @@ function InputHandeler() {
 	});
 };
 
-/**
+/!**
  * Returns whether a key is pressod down
  * @param  {number}  code the keycode to check
  * @return {bool}         the result from check
- */
+ *!/
 InputHandeler.prototype.isDown = function(code) {
 	return this.down[code];
 };
 
-/**
+/!**
  * Return wheter a key has been pressed
  * @param  {number}  code the keycode to check
  * @return {bool}         the result from check
- */
+ *!/
 InputHandeler.prototype.isPressed = function(code) {
 	// if key is registred as pressed return false else if
 	// key down for first time return true else return false
@@ -135,4 +135,6 @@ InputHandeler.prototype.isPressed = function(code) {
 		return this.pressed[code] = true;
 	}
 	return false;
-};
+
+	};
+	*/

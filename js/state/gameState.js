@@ -14,22 +14,39 @@ var
     dir,
     tank,
     bullets,
-    cities,
-    lives;
+    cities;
+
 
 var GameState = State.extend({
 
 
 
     init: function (game) {
-
         this._super(game);
+
+        // init all the sprite
+        var img = new Image();
+        img.addEventListener("load", function() {
+            alSprite = [
+                [new Sprite(this, 0, 0, 22, 16), new Sprite(this, 0, 16, 22, 16)],
+                [new Sprite(this, 22, 0, 16, 16), new Sprite(this, 22, 16, 16, 16)],
+                [new Sprite(this, 38, 0, 24, 16), new Sprite(this, 38, 16, 24, 16)]
+            ];
+            taSprite = new Sprite(this, 62, 0, 22, 16);
+            ciSprite = new Sprite(this, 84, 8, 36, 24);
+
+        })
+
+        img.src = "res/invaders.png";
 
         // score lives variables
         this.lives = 3;
         this.gameOver = false;
         this.score = 0;
 
+        // store canvas dimensions for later use
+        this.canvasWidth = game.canvas.ctx.width;
+        this.canvasHeight = game.canvas.ctx.height;
 
         // set start settings
         frames  = 0;
@@ -40,8 +57,8 @@ var GameState = State.extend({
         // create the tank object
         tank = {
             sprite: taSprite,
-            x: (display.width - taSprite.w) / 2,
-            y: display.height - (30 + taSprite.h)
+            x: (this.canvasWidth - taSprite.w) / 2,
+            y: this.canvasHeight - (30 + taSprite.h)
         };
         // initatie bullet array
         bullets = [];
@@ -57,7 +74,7 @@ var GameState = State.extend({
             init: function() {
                 // create canvas and grab 2d context
                 this.canvas = document.createElement("canvas");
-                this.canvas.width = display.width;
+                this.canvas.width = this.canvasWidth;
                 this.canvas.height = this.h;
                 this.ctx = this.canvas.getContext("2d");
                 for (var i = 0; i < 4; i++) {
@@ -126,6 +143,11 @@ var GameState = State.extend({
     },
 
 
+    /**
+     * @override State.handleInputs
+     *
+     * @param  {InputHandeler} input keeps track of all pressed keys
+     */
     handleInputs: function(input) {
         // only update ship orientation and velocity if it's visible
         if (!this.ship.visible) {
@@ -200,6 +222,27 @@ var GameState = State.extend({
                     continue;
                 }
             }
+
+
+            //if tank get hit by bullet
+            if(AABBIntersect(b.x, b.y, b.width, b.height, tank.x, tank.y, tank.w,tank.h )){
+
+
+
+                this.lives--;
+                if(this.lives <=0){
+                    this.gameOver = true;
+
+                }
+                tank.x =  (display.width - taSprite.w) / 2;
+                tank.y = display.height - (30 + taSprite.h)
+                this.tank.visible = false
+
+            }
+
+
+
+
             // check if bullet hit any aliens
             for (var j = 0, len2 = aliens.length; j < len2; j++) {
                 var a = aliens[j];
@@ -304,37 +347,4 @@ var GameState = State.extend({
 
 
 
-/**
- * Initiate and start the game
- */
-function main() {
-    // create game canvas and inputhandeler
-    display = new Screen(504, 600);
-    input = new InputHandeler();
-    // create all sprites fram assets image
-    var img = new Image();
-    img.addEventListener("load", function() {
-        alSprite = [
-            [new Sprite(this,  0, 0, 22, 16), new Sprite(this,  0, 16, 22, 16)],
-            [new Sprite(this, 22, 0, 16, 16), new Sprite(this, 22, 16, 16, 16)],
-            [new Sprite(this, 38, 0, 24, 16), new Sprite(this, 38, 16, 24, 16)]
-        ];
-        taSprite = new Sprite(this, 62, 0, 22, 16);
-        ciSprite = new Sprite(this, 84, 8, 36, 24);
-        // initate and run the game
-        init();
-        run();
-    });
-    img.src = "res/invaders.png";
-};
-/**
- * Initate game objects
- */
 
-
-
-
-
-
-
-// start and run the game

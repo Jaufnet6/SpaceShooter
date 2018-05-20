@@ -8,6 +8,10 @@ var MenuState = State.extend({
         this.canvasHeight = game.canvas.ctx.height;
     },
 
+    update: function() {
+
+    },
+
 
     handleInputs: function(input) {
         if (input.isPressed("spacebar")) {
@@ -17,7 +21,9 @@ var MenuState = State.extend({
 
     render: function (ctx) {
 
-        ctx.vectorText("SHOOTER LOLZ", 6, null,180)
+        ctx.clearAll();
+
+        ctx.vectorText("BAMBOOZLED AGAIN", 6, null,180)
         ctx.vectorText("push space to play", 2, null, 260);
 
     }

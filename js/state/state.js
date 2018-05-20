@@ -26,5 +26,9 @@ var State = Class.extend({
     },
 
 
+    // render the state to canvas
+    render: function(ctx) {
+        return void 0;
+    }
     
 });
