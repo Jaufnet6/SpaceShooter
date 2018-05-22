@@ -14,7 +14,9 @@ var
     dir,
     tank,
     bullets,
-    cities;
+    cities,
+    canvasWidth,
+canvasHeight;
 
 
 var GameState = State.extend({
@@ -26,17 +28,15 @@ var GameState = State.extend({
 
 
 
-
-
-
         // score lives variables
         this.lives = 3;
         this.gameOver = false;
         this.score = 0;
 
+
         // store canvas dimensions for later use
-        this.canvasWidth = game.canvas.ctx.width;
-        this.canvasHeight = game.canvas.ctx.height;
+        canvasWidth = game.canvas.ctx.width;
+        canvasHeight = game.canvas.ctx.height;
 
         // set start settings
         frames  = 0;
@@ -67,8 +67,8 @@ var GameState = State.extend({
             init: function() {
                 // create canvas and grab 2d context
                 this.canvas = document.createElement("canvas");
-                this.canvas.width = this.canvasWidth;
-                this.canvas.height = this.h;
+                this.canvas.width = canvasWidth;
+                this.canvas.height = canvasHeight;
                 this.ctx = this.canvas.getContext("2d");
                 for (var i = 0; i < 4; i++) {
                     this.ctx.drawImage(ciSprite.img, ciSprite.x, ciSprite.y,
