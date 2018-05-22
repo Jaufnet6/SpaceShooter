@@ -47,8 +47,8 @@ var GameState = State.extend({
         // create the tank object
         tank = {
             sprite: taSprite,
-            x: (this.canvasWidth - taSprite.w) / 2,
-            y: this.canvasHeight - (30 + taSprite.h),
+            x: (canvasWidth - taSprite.w) / 2,
+            y: canvasHeight - (30 + taSprite.h),
             visible:true
         };
 
@@ -196,14 +196,14 @@ var GameState = State.extend({
         frames++;
 
         // keep the tank sprite inside of the canvas
-        tank.x = Math.max(Math.min(tank.x, this.canvasWidth - (30 + taSprite.w)), 30);
+        tank.x = Math.max(Math.min(tank.x, canvasWidth - (30 + taSprite.w)), 30);
 
         // update all bullets position and checks
         for (var i = 0, len = bullets.length; i < len; i++) {
             var b = bullets[i];
             b.update();
             // remove bullets outside of the canvas
-            if (b.y + b.height < 0 || b.y > this.canvasHeight) {
+            if (b.y + b.height < 0 || b.y > canvasHeight) {
                 bullets.splice(i, 1);
                 i--;
                 len--;
@@ -225,15 +225,13 @@ var GameState = State.extend({
             //if tank get hit by bullet
             if(AABBIntersect(b.x, b.y, b.width, b.height, tank.x, tank.y, tank.w,tank.h )){
 
-
-
                 this.lives--;
                 if(this.lives <=0){
                     this.gameOver = true;
 
                 }
-                tank.x =  (this.canvasWidth- taSprite.w) / 2;
-                tank.y = this.canvasHeight - (30 + taSprite.h)
+                tank.x =  (canvasWidth- taSprite.w) / 2;
+                tank.y = canvasHeight - (30 + taSprite.h)
                 this.tank.visible = false
 
             }
@@ -291,7 +289,7 @@ var GameState = State.extend({
         // update the aliens at the current movement frequence
         if (frames % lvFrame === 0) {
             spFrame = (spFrame + 1) % 2;
-            var _max = 0, _min = this.canvasWidth;
+            var _max = 0, _min = canvasWidth;
             // iterate through aliens and update postition
             for (var i = 0, len = aliens.length; i < len; i++) {
                 var a = aliens[i];
@@ -302,7 +300,7 @@ var GameState = State.extend({
                 _min = Math.min(_min, a.x);
             }
             // check if aliens should move down and change direction
-            if (_max > this.canvasWidth - 30 || _min < 30) {
+            if (_max > canvasWidth - 30 || _min < 30) {
                 // mirror direction and update position
                 dir *= -1;
                 for (var i = 0, len = aliens.length; i < len; i++) {
@@ -332,6 +330,7 @@ var GameState = State.extend({
             contx.drawBullet(bullets[i]);
         }
         contx.restore();
+
         // draw the city graphics to the canvas
         contx.drawImage(cities.canvas, 0, cities.y);
         // draw the tank sprite
