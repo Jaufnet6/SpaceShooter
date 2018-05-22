@@ -78,6 +78,7 @@ var Game = Class.extend({
             }
 
             // update and render active state
+
             self.currentState.handleInputs(self.input);
             self.currentState.update();
             self.currentState.render(self.canvas.ctx);

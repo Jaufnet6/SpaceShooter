@@ -3,7 +3,6 @@ var
      * Game objects
      */
     display,
-    input,
     frames,
     spFrame,
     lvFrame,
@@ -16,7 +15,7 @@ var
     bullets,
     cities,
     canvasWidth,
-canvasHeight;
+    canvasHeight;
 
 
 var GameState = State.extend({
@@ -29,9 +28,9 @@ var GameState = State.extend({
 
 
         // score lives variables
-        this.lives = 3;
-        this.gameOver = false;
-        this.score = 0;
+        lives = 3;
+        gameOver = false;
+        score = 0;
 
 
         // store canvas dimensions for later use
@@ -169,6 +168,7 @@ var GameState = State.extend({
         if (input.isPressed("spacebar")) { // Space
             bullets.push(new Bullet(tank.x + 10, tank.y, -8, 2, 6, "#fff"));
         }
+        
 
     },
 
@@ -253,19 +253,23 @@ var GameState = State.extend({
                     // when there are less of them
                     switch (len2) {
                         case 30: {
-                            this.lvFrame = 40;
+                            lvFrame = 40;
+                            score += 1;
                             break;
                         }
                         case 10: {
-                            this.lvFrame = 20;
+                            lvFrame = 20;
+                            score += 2;
                             break;
                         }
                         case 5: {
-                            this.lvFrame = 15;
+                            lvFrame = 15;
+                            score += 5;
                             break;
                         }
                         case 1: {
-                            this.lvFrame = 6;
+                            lvFrame = 6;
+                            score += 10;
                             break;
                         }
                     }
@@ -323,6 +327,11 @@ var GameState = State.extend({
         for (var i = 0, len = aliens.length; i < len; i++) {
             var a = aliens[i];
             contx.drawSprite(a.sprite[spFrame], a.x, a.y);
+        }
+
+        contx.vectorText(score.toString(), 3, 35, 10);
+        for (var i = 0; i < lives; i++) {
+            contx.drawSprite(tank.sprite, 400+25*i, 10);
         }
         // save context and draw bullet then restore
         contx.save();
