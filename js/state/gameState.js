@@ -199,14 +199,15 @@ var GameState = State.extend({
         tank.x = Math.max(Math.min(tank.x, canvasWidth - (30 + taSprite.w)), 30);
 
         // update all bullets position and checks
-        for (var i = 0, len = bullets.length; i < len; i++) {
+        for (var i = 0, nbBullet = bullets.length; i < nbBullet; i++) {
             var b = bullets[i];
             b.update();
+
             // remove bullets outside of the canvas
             if (b.y + b.height < 0 || b.y > canvasHeight) {
                 bullets.splice(i, 1);
                 i--;
-                len--;
+                nbBullet--;
                 continue;
             }
             // check if bullet hits any city
@@ -216,7 +217,7 @@ var GameState = State.extend({
                 if (cities.hits(b.x, b.y+h2)) {
                     bullets.splice(i, 1);
                     i--;
-                    len--;
+                    nbBullet--;
                     continue;
                 }
             }
@@ -236,40 +237,53 @@ var GameState = State.extend({
 
             }
 
-
-
-
             // check if bullet hit any aliens
-            for (var j = 0, len2 = aliens.length; j < len2; j++) {
+            for (var j = 0, nbAlien = aliens.length; j < nbAlien; j++) {
                 var a = aliens[j];
                 if (AABBIntersect(b.x, b.y, b.width, b.height, a.x, a.y, a.w, a.h)) {
                     aliens.splice(j, 1);
                     j--;
-                    len2--;
+                    nbAlien--;
                     bullets.splice(i, 1);
                     i--;
-                    len--;
+                    nbBullet--;
+
+
+
+
+                    score += 51-nbAlien;
                     // increase the movement frequence of the aliens
                     // when there are less of them
-                    switch (len2) {
-                        case 30: {
+                    switch (nbAlien) {
+
+                        case 45: {
+                            lvFrame = 50;
+
+                            break;
+                        }
+                        case 40: {
                             lvFrame = 40;
-                            score += 1;
+
+                            break;
+                        }
+                        case 30: {
+                            lvFrame = 30;
+
+                            break;
+                        }
+                        case 20: {
+                            lvFrame = 20;
+
                             break;
                         }
                         case 10: {
-                            lvFrame = 20;
-                            score += 2;
+                            lvFrame = 15;
+
                             break;
                         }
                         case 5: {
-                            lvFrame = 15;
-                            score += 5;
-                            break;
-                        }
-                        case 1: {
                             lvFrame = 6;
-                            score += 10;
+
                             break;
                         }
                     }
