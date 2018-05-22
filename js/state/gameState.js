@@ -256,6 +256,7 @@ var GameState = State.extend({
                     // when there are less of them
                     switch (nbAlien) {
 
+
                         case 45: {
                             lvFrame = 50;
 
