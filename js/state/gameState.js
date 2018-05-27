@@ -218,7 +218,6 @@ var GameState = State.extend({
 
                     lives--;
                     if (lives <= 0) {
-                        taSprite;
                         tank.visible = false;
                         gameOver = true;
 
@@ -231,9 +230,20 @@ var GameState = State.extend({
                 }
             }
 
-            // check if bullet hit any aliens
+
+
+
+
+            // check if bullet hit any aliens and check if the alien touch a city
             for (var j = 0, nbAlien = aliens.length; j < nbAlien; j++) {
                 var a = aliens[j];
+
+                if (AABBIntersect(ciSprite.x, cities.y, ciSprite.w, cities.h,  a.x, a.y, a.w, a.h)){
+                    gameOver = true;
+                    tank.visible = false;
+                }
+
+
                 if (AABBIntersect(b.x, b.y, b.width, b.height, a.x, a.y, a.w, a.h)) {
                     aliens.splice(j, 1);
                     j--;
@@ -248,12 +258,12 @@ var GameState = State.extend({
 
 
                         case 45: {
-                            lvFrame = 50;
+                            lvFrame = 10 ;
 
                             break;
                         }
                         case 40: {
-                            lvFrame = 40;
+                            lvFrame = 10;
 
                             break;
                         }
