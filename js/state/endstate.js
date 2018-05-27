@@ -11,18 +11,26 @@ var EndState = State.extend({
 
         this.score = game.stateVars.score;
 
+        gameSound = document.getElementById("gameOver");
+        gameSound.loop = true;
+        gameSound.volume = .25;
+        gameSound.load();
+        gameSound.play();
+
+
 
     },
 
 
 
     handleInputs: function(input) {
-        if (this.hasEnterName) {
-            if (input.isPressed("spacebar")) {
+
+            if (input.isPressed("enter")) {
                 // change the game state
+                gameSound.pause();
                 this.game.nextState = States.MENU;
             }
-        }
+
     },
 
 
@@ -33,8 +41,8 @@ var EndState = State.extend({
 
 
             ctx.vectorText("Your score " + score, 3, null, 300);
-            ctx.vectorText("Press spacebar to begin a new game", 2, null, 200);
-            ctx.vectorText("Thank you for playing" + score, 3, null, 100);
+            ctx.vectorText("Press enter to begin a new game", 2, null, 200);
+            ctx.vectorText("Thank you for playing", 3, null, 100);
 
         }
 

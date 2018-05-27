@@ -2,7 +2,7 @@ var
     /**
      * Game objects
      */
-    display,
+
     frames,
     spFrame,
     lvFrame,
@@ -15,18 +15,39 @@ var
     bullets,
     cities,
     canvasWidth,
-    canvasHeight,
-    lives = 3,
-    gameOver = false,
-    score = 0;
+    canvasHeight;
+
+
+;
+
 
 
 var GameState = State.extend({
 
 
-
     init: function (game) {
         this._super(game);
+        lives = 3;
+        gameOver = false;
+        score = 0;
+        lvl = 1;
+
+
+        gameSound = document.getElementById("gameBackground");
+        gameSound.loop = true;
+        gameSound.volume = .25;
+        gameSound.load();
+        gameSound.play();
+
+        shoot = new SoundPool(10);
+        shoot.init("shoot");
+
+        explosion = new SoundPool(20);
+        explosion.init("explosion");
+
+        killed = new SoundPool(10);
+        killed.init("invaderKilled");
+
 
 
 
@@ -151,6 +172,7 @@ var GameState = State.extend({
             if (input.isPressed("spacebar")) {
                 // change state if game over
                 if (gameOver) {
+                    gameSound.pause();
                     game.nextState = States.END;
                     game.stateVars.score = this.score;
                     return;
@@ -172,6 +194,7 @@ var GameState = State.extend({
         // pressed
         if (input.isPressed("spacebar")) { // Space
             bullets.push(new Bullet(tank.x + 10, tank.y, -8, 2, 6, "#fff"));
+            shoot.get();
         }
 
 
@@ -229,6 +252,7 @@ var GameState = State.extend({
                     }
                     tank.x = (canvasWidth - taSprite.w) / 2;
                     tank.y = canvasHeight - (30 + taSprite.h);
+                    explosion.get();
 
                     tank.visible = false;
 
@@ -247,6 +271,7 @@ var GameState = State.extend({
 
 
                 if (AABBIntersect(b.x, b.y, b.width, b.height, a.x, a.y, a.w, a.h)) {
+                    killed.get();
                     aliens.splice(j, 1);
                     j--;
                     nbAlien--;
@@ -256,34 +281,69 @@ var GameState = State.extend({
                     score += 51-nbAlien;
                     // increase the movement frequence of the aliens
                     // when there are less of them
+
+
                     switch (nbAlien) {
                         case 45: {
-                            lvFrame = 45;
+                            lvFrame = lvFrame - 1;
 
                             break;
                         }
                         case 40: {
-                            lvFrame = 40;
+                            lvFrame = lvFrame - 3;
 
                             break;
                         }
                         case 30: {
-                            lvFrame = 30;
+                            lvFrame = lvFrame - 5;
 
                             break;
                         }
                         case 20: {
-                            lvFrame = 20;
+                            lvFrame = lvFrame - 7;
 
                             break;
                         }
                         case 10: {
-                            lvFrame = 15;
+                            lvFrame = lvFrame - 9;
 
                             break;
                         }
                         case 5: {
-                            lvFrame =10;
+                            lvFrame = lvFrame - 11;
+
+                            break;
+                        }
+                    }
+
+                    switch (lvl) {
+                        case 1: {
+                            lvFrame = 45;
+
+                            break;
+                        }
+                        case 2: {
+                            lvFrame = 35;
+
+                            break;
+                        }
+                        case 3: {
+                            lvFrame = 30;
+
+                            break;
+                        }
+                        case 4: {
+                            lvFrame = 25;
+
+                            break;
+                        }
+                        case 5: {
+                            lvFrame = 18;
+
+                            break;
+                        }
+                        case 6: {
+                            lvFrame =15;
 
                             break;
                         }
@@ -346,6 +406,7 @@ var GameState = State.extend({
                     }
 
                 }
+                lvl++;
 
             }
 
@@ -397,6 +458,71 @@ var GameState = State.extend({
 
 
 });
+
+
+
+
+
+function SoundPool(maxSize) {
+    var size = maxSize; // Max sounds allowed in the pool
+    var pool = [];
+    this.pool = pool;
+    var currSound = 0;
+    /*
+     * Populates the pool array with the given sound
+     */
+    this.init = function(object) {
+
+
+        switch(object){
+
+
+
+            case "shoot" : {
+                for (var i = 0; i < size; i++) {
+                    // Initalize the sound
+                    bullet = new Audio("audio/shoot.wav");
+                    bullet.volume = .12;
+                    bullet.load();
+                    pool[i] = bullet;
+                }
+                break;
+            }
+
+            case "explosion": {
+                for (var i = 0; i < size; i++) {
+                    var explosion = new Audio("audio/explosion.wav");
+                    explosion.volume = .1;
+                    explosion.load();
+                    pool[i] = explosion;
+                }
+                break;
+            }
+
+            case "invaderKilled":
+            {
+                for (var i = 0; i < size; i++) {
+                    var explosion = new Audio("audio/invaderKilled.wav");
+                    explosion.volume = .1;
+                    explosion.load();
+                    pool[i] = explosion;
+                }
+                break;
+            }
+        }
+
+
+    };
+    /*
+     * Plays a sound
+     */
+    this.get = function() {
+        if(pool[currSound].currentTime == 0 || pool[currSound].ended) {
+            pool[currSound].play();
+        }
+        currSound = (currSound + 1) % size;
+    };
+}
 
 
 
