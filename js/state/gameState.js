@@ -15,7 +15,10 @@ var
     bullets,
     cities,
     canvasWidth,
-    canvasHeight;
+    canvasHeight,
+    lives = 3,
+    gameOver = false,
+    score = 0;
 
 
 var GameState = State.extend({
@@ -28,9 +31,7 @@ var GameState = State.extend({
 
 
         // score lives variables
-        lives = 3;
-        gameOver = false;
-        score = 0;
+
 
 
         // store canvas dimensions for later use
@@ -135,6 +136,10 @@ var GameState = State.extend({
     },
 
 
+
+
+
+
     /**
      * @override State.handleInputs
      *
@@ -145,7 +150,7 @@ var GameState = State.extend({
         if (!tank.visible) {
             if (input.isPressed("spacebar")) {
                 // change state if game over
-                 if (gameOver) {
+                if (gameOver) {
                     game.nextState = States.END;
                     game.stateVars.score = this.score;
                     return;
@@ -168,7 +173,7 @@ var GameState = State.extend({
         if (input.isPressed("spacebar")) { // Space
             bullets.push(new Bullet(tank.x + 10, tank.y, -8, 2, 6, "#fff"));
         }
-        
+
 
     },
 
@@ -230,17 +235,14 @@ var GameState = State.extend({
                 }
             }
 
-
-
-
-
             // check if bullet hit any aliens and check if the alien touch a city
             for (var j = 0, nbAlien = aliens.length; j < nbAlien; j++) {
                 var a = aliens[j];
 
-                if (AABBIntersect(ciSprite.x, cities.y, ciSprite.w, cities.h,  a.x, a.y, a.w, a.h)){
+                if (AABBIntersect(ciSprite.x, cities.y, ciSprite.w, cities.h, a.x, a.y, a.w, a.h)){
                     gameOver = true;
                     tank.visible = false;
+                    lvFrame = 0;
                 }
 
 
@@ -255,15 +257,13 @@ var GameState = State.extend({
                     // increase the movement frequence of the aliens
                     // when there are less of them
                     switch (nbAlien) {
-
-
                         case 45: {
-                            lvFrame = 10 ;
+                            lvFrame = 45;
 
                             break;
                         }
                         case 40: {
-                            lvFrame = 10;
+                            lvFrame = 40;
 
                             break;
                         }
@@ -327,6 +327,28 @@ var GameState = State.extend({
                     aliens[i].y += 30;
                 }
             }
+
+            if (aliens.length == 0 ){
+
+                var rows = [1, 0, 0, 2, 2];
+                for (var i = 0, len = rows.length; i < len; i++) {
+                    for (var j = 0; j < 10; j++) {
+                        var a = rows[i];
+                        // create right offseted alien and push to alien
+                        // array
+                        aliens.push({
+                            sprite: alSprite[a],
+                            x: 30 + j*30 + [0, 4, 0][a],
+                            y: 30 + i*30,
+                            w: alSprite[a][0].w,
+                            h: alSprite[a][0].h
+                        });
+                    }
+
+                }
+
+            }
+
         }
     },
 
@@ -368,6 +390,7 @@ var GameState = State.extend({
 
             contx.vectorText("Game Over", 4, null, null);
             contx.clearRect(tank.x,tank.y, taSprite.w, taSprite.h);
+
 
         }
     }
