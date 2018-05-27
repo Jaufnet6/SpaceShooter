@@ -240,6 +240,7 @@ var GameState = State.extend({
                 //this.tank.visible = true;
 
 
+
             }
 
             // check if bullet hit any aliens
