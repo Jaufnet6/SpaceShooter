@@ -48,7 +48,7 @@ var GameState = State.extend({
             sprite: taSprite,
             x: (canvasWidth - taSprite.w) / 2,
             y: canvasHeight - (30 + taSprite.h),
-            visible:true
+            visible:false
         };
 
 
@@ -145,12 +145,12 @@ var GameState = State.extend({
         if (!tank.visible) {
             if (input.isPressed("spacebar")) {
                 // change state if game over
-                if (this.gameOver) {
-                    this.game.nextState = States.END;
-                    this.game.stateVars.score = this.score;
+                 if (gameOver) {
+                    game.nextState = States.END;
+                    game.stateVars.score = this.score;
                     return;
                 }
-                this.tank.visible = true;
+                tank.visible = true;
             }
             return;
         }
@@ -172,19 +172,6 @@ var GameState = State.extend({
 
     },
 
-
-    /**
-     * Wrapper around the game loop function, updates and renders
-     * the game
-     */
-    run: function() {
-        var loop = function() {
-            update();
-            render();
-            window.requestAnimationFrame(loop, display.canvas);
-        };
-        window.requestAnimationFrame(loop, display.canvas);
-    },
 
 
 
@@ -222,25 +209,26 @@ var GameState = State.extend({
                 }
             }
 
+            if (tank.visible == true) {
+                //if tank get hit by bullet
+                if (AABBIntersect(b.x, b.y, b.width, b.height, tank.x, tank.y, taSprite.w, taSprite.h)) {
 
-            //if tank get hit by bullet
-            if(AABBIntersect(b.x, b.y, b.width, b.height, tank.x, tank.y, taSprite.w,taSprite.h )){
+                    bullets.splice(i, 1);
+                    nbBullet--;
 
-                bullets.splice(i, 1);
-                nbBullet--;
+                    lives--;
+                    if (lives <= 0) {
+                        taSprite;
+                        tank.visible = false;
+                        gameOver = true;
 
-                lives--;
-                if(lives <=0){
-                    gameOver = true;
+                    }
+                    tank.x = (canvasWidth - taSprite.w) / 2;
+                    tank.y = canvasHeight - (30 + taSprite.h);
+
+                    tank.visible = false;
 
                 }
-                tank.x =  (canvasWidth- taSprite.w) / 2;
-                tank.y = canvasHeight - (30 + taSprite.h);
-
-                //this.tank.visible = true;
-
-
-
             }
 
             // check if bullet hit any aliens
@@ -365,9 +353,15 @@ var GameState = State.extend({
         contx.drawImage(cities.canvas, 0, cities.y);
         // draw the tank sprite
         contx.drawSprite(tank.sprite, tank.x, tank.y);
+
+        if (tank.visible == false )
+            contx.clearRect(tank.x,tank.y, taSprite.w, taSprite.h);
+
         // draw game over messege
-        if (this.gameOver) {
+        if (gameOver) {
             contx.vectorText("Game Over", 4, null, null);
+            contx.clearRect(tank.x,tank.y, taSprite.w, taSprite.h);
+
         }
     }
 

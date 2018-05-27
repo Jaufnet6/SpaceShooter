@@ -46,7 +46,7 @@ var Game = Class.extend({
         img.src = "res/invaders.png";
 
 
-        // declate variables used for managing states
+        // declare variables used for managing states
         this.currentState = null;
         this.stateVars = {
             score: 0
