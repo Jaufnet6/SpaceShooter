@@ -136,10 +136,6 @@ var Canvas = Class.extend({
 
 
 
-
-
-
-
 			// return augmented drawing context
 			return ctx;
 		})(this.canvas.getContext("2d"));
