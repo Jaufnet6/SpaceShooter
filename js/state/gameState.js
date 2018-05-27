@@ -241,10 +241,6 @@ var GameState = State.extend({
                     bullets.splice(i, 1);
                     i--;
                     nbBullet--;
-
-
-
-
                     score += 51-nbAlien;
                     // increase the movement frequence of the aliens
                     // when there are less of them
