@@ -224,16 +224,16 @@ var GameState = State.extend({
 
 
             //if tank get hit by bullet
-            if(AABBIntersect(b.x, b.y, b.width, b.height, tank.x, tank.y, tank.w,tank.h )){
+            if(AABBIntersect(b.x, b.y, b.width, b.height, tank.x, tank.y, taSprite.w, taSprite.h )){
 
-                this.lives--;
-                if(this.lives <=0){
-                    this.gameOver = true;
+                lives--;
+                if(lives <=0){
+                    gameOver = true;
 
                 }
                 tank.x =  (canvasWidth- taSprite.w) / 2;
                 tank.y = canvasHeight - (30 + taSprite.h)
-                this.tank.visible = false
+                tank.visible = false
 
             }
 
