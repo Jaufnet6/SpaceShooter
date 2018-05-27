@@ -365,6 +365,7 @@ var GameState = State.extend({
 
         // draw game over messege
         if (gameOver) {
+
             contx.vectorText("Game Over", 4, null, null);
             contx.clearRect(tank.x,tank.y, taSprite.w, taSprite.h);
 

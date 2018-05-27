@@ -11,6 +11,7 @@ var EndState = State.extend({
 
         this.score = game.stateVars.score;
 
+
     },
 
 
@@ -27,8 +28,16 @@ var EndState = State.extend({
 
     render: function(ctx) {
         ctx.clearAll();
-        ctx.vectorText("Thank you for playing", 4, null, 100);
-        ctx.vectorText(this.score, 3, null, 300);
+
+        if (gameOver == true){
+
+
+            ctx.vectorText("Your score " + score, 3, null, 300);
+            ctx.vectorText("Press spacebar to begin a new game", 2, null, 200);
+            ctx.vectorText("Thank you for playing" + score, 3, null, 100);
+
+        }
+
     }
 
 
