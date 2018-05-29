@@ -226,8 +226,9 @@ var GameState = State.extend({
                 continue;
             }
             // check if bullet hits any city
-            var h2 = b.height * 0.5; // half hight is used for
-                                     // simplicity
+            var h2 = b.height * 0.5;
+
+
             if (cities.y < b.y+h2 && b.y+h2 < cities.y + cities.h) {
                 if (cities.hits(b.x, b.y+h2)) {
                     bullets.splice(i, 1);
@@ -239,7 +240,7 @@ var GameState = State.extend({
 
             if (tank.visible == true) {
                 //if tank get hit by bullet
-                if (AABBIntersect(b.x, b.y, b.width, b.height, tank.x, tank.y, taSprite.w, taSprite.h)) {
+                if (touche(b.x, b.y, b.width, b.height, tank.x, tank.y, taSprite.w, taSprite.h)) {
 
                     bullets.splice(i, 1);
                     nbBullet--;
@@ -263,14 +264,14 @@ var GameState = State.extend({
             for (var j = 0, nbAlien = aliens.length; j < nbAlien; j++) {
                 var a = aliens[j];
 
-                if (AABBIntersect(ciSprite.x, cities.y, ciSprite.w, cities.h, a.x, a.y, a.w, a.h)){
+                if (touche(ciSprite.x, cities.y, ciSprite.w, cities.h, a.x, a.y, a.w, a.h)){
                     gameOver = true;
                     tank.visible = false;
                     lvFrame = 0;
                 }
 
 
-                if (AABBIntersect(b.x, b.y, b.width, b.height, a.x, a.y, a.w, a.h)) {
+                if (touche(b.x, b.y, b.width, b.height, a.x, a.y, a.w, a.h)) {
                     killed.get();
                     aliens.splice(j, 1);
                     j--;
@@ -358,7 +359,7 @@ var GameState = State.extend({
             // sure only shoot from front line
             for (var i = 0, len = aliens.length; i < len; i++) {
                 var b = aliens[i];
-                if (AABBIntersect(a.x, a.y, a.w, 100, b.x, b.y, b.w, b.h)) {
+                if (touche(a.x, a.y, a.w, 100, b.x, b.y, b.w, b.h)) {
                     a = b;
                 }
             }
@@ -472,8 +473,6 @@ function SoundPool(maxSize) {
      * Populates the pool array with the given sound
      */
     this.init = function(object) {
-
-
         switch(object){
 
 

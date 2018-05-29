@@ -1,3 +1,6 @@
+
+
+// etat du jeu
 var States = {
     NO_CHANGE: 0,
     MENU: 1,
@@ -9,15 +12,14 @@ var States = {
 
 var Game = Class.extend({
 
-    /**
-     * Constructor
-     */
+    // constructeur
     init: function() {
 
 
-        // public important members used for update and rendering
+        //declaration du canvas
         this.canvas = new Canvas(504, 600);
 
+        // declaration du input handeler
         this.input = new InputHandeler({
             left:     37,
             right:    39,
@@ -29,9 +31,13 @@ var Game = Class.extend({
         // bacground
         this.canvas.ctx.strokeStyle = "#fff";
 
-        // init all the sprite
+        // initialise les sprites en chargeant une image
         var img = new Image();
 
+        // donne la source de l'image
+        img.src = "res/invaders.png";
+
+        // quand l'image est chargee, associe les sprites aux parties de l'image
         img.addEventListener("load", function() {
             alSprite = [
                 [new Sprite(this, 0, 0, 22, 16), new Sprite(this, 0, 16, 22, 16)],
@@ -43,10 +49,10 @@ var Game = Class.extend({
 
         });
 
-        img.src = "res/invaders.png";
 
 
-        // declare variables used for managing states
+
+        //declare l'etat courant et le score a 0
         this.currentState = null;
         this.stateVars = {
             score: 0
@@ -54,14 +60,13 @@ var Game = Class.extend({
         this.nextState = States.MENU;
     },
 
-    /**
-     * Starts and runs the game
-     */
+
     run: function() {
         var self = this;
 
         this.canvas.animate(function() {
-            // change and initiate states when needed0
+
+            //  permet de gerer l'etat du canvas (menu, game, game over)
             if (self.nextState !== States.NO_CHANGE) {
                 switch(self.nextState) {
                     case States.MENU:
@@ -77,8 +82,7 @@ var Game = Class.extend({
                 self.nextState = States.NO_CHANGE;
             }
 
-            // update and render active state
-
+            // appelle tout les states ainsi que leur methode
             self.currentState.handleInputs(self.input);
             self.currentState.update();
             self.currentState.render(self.canvas.ctx);

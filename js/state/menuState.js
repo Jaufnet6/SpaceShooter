@@ -1,30 +1,27 @@
+// menu avant le jeu,
 var MenuState = State.extend({
 
     init: function(game) {
-        this._super(game); // call super construtor
-
-        // store canvas dimensions for later use
-        this.canvasWidth = game.canvas.ctx.width;
-        this.canvasHeight = game.canvas.ctx.height;
-    },
-
-    update: function() {
+        //constructeur
+        this._super(game);
 
     },
 
-
+    // gere l'action utilisateur
     handleInputs: function(input) {
         if (input.isPressed("spacebar")) {
             this.game.nextState = States.GAME;
         }
     },
 
+    // ecris dans le canvas
     render: function (ctx) {
 
         ctx.clearAll();
 
         ctx.vectorText("Spaceshooters", 6, null,180)
         ctx.vectorText("push space to play", 2, null, 260);
+        ctx.vectorText("game developed by orevie", 1 , null, 300);
 
     }
 

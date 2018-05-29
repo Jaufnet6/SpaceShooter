@@ -1,5 +1,4 @@
-/*
-state class, super class */
+// super class pour definir les fonctions des etat
 var State = Class.extend({
     
     init: function (game ) {
@@ -8,25 +7,18 @@ var State = Class.extend({
     },
 
 
-/*
+    // retourne 0 car définie plus tard
 
- React to pressed keys, called before the update  method
-*/
     handleInputs: function(input) {
         return void 0;
     },
 
 
-    /*
 
-     Called when state is updated
-     */
     update: function() {
         return void 0;
     },
 
-
-    // render the state to canvas
     render: function(ctx) {
         return void 0;
     }

@@ -1,7 +1,6 @@
-/**
- * Global object containing all verticies for the game graphics,
- * see. polygondraw.html
- */
+
+// classe realisee par maxwihlborg afin de dessiner des lettre et chiffres dans le canevas a l'aide de polygon
+
 var Points = {
 
 	
