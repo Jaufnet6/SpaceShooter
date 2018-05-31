@@ -35,6 +35,7 @@ section{
     float: right;
     text-align: center;
 }
+
 mid {
     width: 80%;
     height: 650px;
@@ -43,6 +44,7 @@ mid {
     border-radius: 25px;
     float: right;
 }
+
 table {
     font-family: Trebuchet MS;
     border-collapse: collapse;
@@ -57,16 +59,15 @@ td, th{
 
 tr:nth-child(even) {
     background-color: #3B5C8F;
-
 }
-th{
 
+th{
     background-color: #314178;
     font-variant: small-caps;
     font-size: 25px;
     border-radius: 35px;
-
 }
+
 nav ul {
     list-style-type: none;
     margin: 0;
