@@ -9,7 +9,6 @@ var States = {
 }
 
 
-
 var Game = Class.extend({
 
     // constructeur
@@ -17,7 +16,7 @@ var Game = Class.extend({
 
 
         //declaration du canvas
-        this.canvas = new Canvas(504, 600);
+        this.canvas = new Canvas(504, 504);
 
         // declaration du input handeler
         this.input = new InputHandeler({

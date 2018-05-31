@@ -1,10 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="styles/style.css" type="text/css">
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>SPACESHOOTERS - PROFILE</title>
 </head>
+<nav>
+    <ul>
+        <li><a href="game.html">Play</a></li>
+        <li><a href="leaderboard.html">Leaderboard</a></li>
+        <li><a href="profil.html">My account</a></li>
+        <li><a href="index.html">Log out</a></li>
+    </ul>
+</nav>
 <body>
-
+<div id="profileTitle" class="container">
+    <h2 class="center">My Account</h2>
+</div>
+<main class="container">
+    <div class="center">
+        <img class="center" src="images/default-user.png" width="150px"/>
+    </div>
+    <br/>
+    <hr/>
+    <br/>
+    <div class="center">
+        <label for="username">Username : </label>
+        <input type="text" id="username" disabled placeholder="Player name">
+    </div>
+    <div class="center">
+        <label for="email">Email address : </label>
+        <input type="email" id="email" disabled placeholder="Player email">
+    </div>
+</main>
 </body>
 </html>

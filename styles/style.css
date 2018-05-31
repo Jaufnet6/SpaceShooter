@@ -7,7 +7,13 @@ body{
     font-family: Trebuchet MS;
     color: #fff;
     width: 99%;
-    text-align: center;
+}
+
+main {
+    width: 95%;
+    margin: 1em auto;
+    padding: 1em;
+    border-radius: 25px;
 }
 
 aside {
@@ -17,6 +23,7 @@ aside {
     padding: 1em;
     border-radius: 25px;
     float: left;
+    text-align: center;
 }
 
 section{
@@ -26,6 +33,7 @@ section{
     padding: 1em;
     border-radius: 25px;
     float: right;
+    text-align: center;
 }
 
 nav ul {
@@ -67,6 +75,11 @@ h1{
     margin: auto;
 }
 
+input{
+    background-color: #314178;
+    color: #fff;
+}
+
 .center{
     margin: auto;
     text-align: center;
@@ -76,6 +89,37 @@ h1{
     background-color: #3B5C8F;
     font-family: Trebuchet MS;
     color: #fff;
+    border-radius: 25px;
+}
+
+.horizontalRow{
+    width: 100%;
+}
+
+.horizontalBlock{
+    text-align: center;
+    vertical-align: top;
+    width: 83%;
+    display: inline-block;
+}
+
+.profileBodyTitle{
+    margin: 1em;
+    padding: 1em;
+    font-variant: small-caps;
+}
+
+#profileTitle{
+    width: 95%;
+    height: 60px;
+    margin: 1em auto;
+    padding: 1em;
+    border-radius: 25px;
+    font-variant: small-caps;
+}
+
+#profileBody{
+    height: fit-content;
 }
 
 #images {
@@ -90,4 +134,9 @@ h1{
     border-radius: 25px;
     background-color: #3B5C8F;
     margin: 1em auto;
+}
+
+#playerName{
+    font-size: 25px;
+    font-variant: small-caps;
 }
