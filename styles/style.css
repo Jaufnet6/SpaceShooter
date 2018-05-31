@@ -53,9 +53,10 @@ tr:nth-child(even) {
 }
 th{
 
-    background-color: darkblue;
+    background-color: #314178;
     font-variant: small-caps;
     font-size: 25px;
+    border-radius: 35px;
 
 }
 nav ul {
