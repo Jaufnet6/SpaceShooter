@@ -56,15 +56,20 @@ nav li a:hover {
 }
 
 a {
-    display: flex;
+    display: inline-block;
     color: #fff;
-    justify-content: center;
     padding: 30px;
     size: 30px;
+    text-shadow: 3px 1px #000000;
 }
 
 h1{
     margin: auto;
+}
+
+.center{
+    margin: auto;
+    text-align: center;
 }
 
 .container{
