@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en">
-<head>
+<header>
+    <link rel="stylesheet" href="styles/style.css" type="text/css">
     <meta charset="UTF-8">
     <title>Space Invaders</title>
 
@@ -16,36 +17,72 @@
     <script src="js/input.js"></script>
     <script src="js/main.js"></script>
 
-<!--    states       -->
+    <!--    states       -->
     <script src="js/state/state.js"></script>
     <script src="js/state/endstate.js"></script>
     <script src="js/state/gameState.js"></script>
     <script src="js/state/menuState.js"></script>
-    <audio id = "gameBackground">
-        <source src = "audio/gameSound.wav" type = "audio/wav">
+    <audio id="gameBackground">
+        <source src="audio/gameSound.wav" type="audio/wav">
     </audio>
-    <audio id = "gameOver">
-        <source src = "audio/gameOver.wav" type = "audio/wav">
+    <audio id="gameOver">
+        <source src="audio/gameOver.wav" type="audio/wav">
     </audio>
-
-
     <style>
         canvas {
             background-color: #000;
             display: block;
             position: absolute;
             margin: auto;
-            top: 0;
+            top: 2em;
             bottom: 0;
             left: 0;
             right: 0;
         }
     </style>
-</head>
+</header>
+<nav>
+    <ul>
+        <li><a href="game.html">Play</a></li>
+        <li><a href="leaderboard.html">Leaderboard</a></li>
+        <li><a href="profil.html">My account</a></li>
+        <li><a href="index.html">Log out</a></li>
+    </ul>
+</nav>
 <body>
-<script>
-    var game = new Game();
-    game.run();
-</script>
+<aside class="container">
+    <h3>Are you the hero the galaxy needs ?</h3>
+    <hr/>
+    <br/>
+    <p>Keep calm and shoot the aliens !</p>
+    <br/>
+    <p>Destroy waves after waves of enemy spaceships without destroying your own greens bases</p>
+    <br/>
+    <p>The more you kill aliens, the more you collect points</p>
+    <br/>
+    <p>Compare your score with other players !</p>
+</aside>
+    <div id="game">
+        <canvas>
+            <script>
+                var game = new Game();
+                game.run();
+            </script>
+        </canvas>
+    </div>
+<section class="container">
+    <h3>How to play</h3>
+    <hr/>
+    <br/>
+    <p>Move your spaceship</p>
+    <br/>
+    <img src="images/keyboard_key_left.png" height="64" width="64"/>
+    <img src="images/keyboard_key_right.png" height="64" width="64"/>
+    <br/>
+    <br/>
+    <p>Shoot</p>
+    <br/>
+    <img src="images/PC_sbar.png" height="82" width="128"/>
+</section>
 </body>
 </html>
