@@ -24,13 +24,33 @@
     <br/>
     <hr/>
     <br/>
-    <div class="center">
-        <label for="username">Username : </label>
-        <input type="text" id="username" disabled placeholder="Player name">
+    <div class="horizontalRow">
+        <div class="horizontalBlockProfile">
+            <p>
+                <label for="username">Username</label>
+            </p>
+            <p>
+                <label for="email">Email address</label>
+            </p>
+            <p class="profileBody">Best score</p>
+            <p class="profileBody">Country</p>
+
+        </div>
+        <div class="horizontalBlockProfile">
+            <p>
+                <input type="text" id="username" disabled placeholder="Player name">
+            </p>
+            <p>
+                <input type="email" id="email" disabled placeholder="Player email">
+            </p>
+            <p class="profileBody">GET_SCORE</p>
+            <p class="profileBody">COUNTRY_PIC</p>
+        </div>
     </div>
     <div class="center">
-        <label for="email">Email address : </label>
-        <input type="email" id="email" disabled placeholder="Player email">
+        <button class="btn info" id="editProfileButton">Edit profile</button>
+        <button class="btn success" id="okProfileButton" style="display: none">OK</button>
+        <button class="btn danger" id="cancelProfileButton" style="display: none">Cancel</button>
     </div>
 </main>
 </body>

@@ -107,9 +107,26 @@ h1{
     margin: auto;
 }
 
-input{
-    background-color: #314178;
+label{
+    font-family: Trebuchet MS;
+    font-size: 25px;
+    font-variant: small-caps;
     color: #fff;
+}
+
+input{
+    font-family: Trebuchet MS;
+    font-size: 25px;
+    background-color: #324890;
+    color: white;
+}
+
+.profileBody{
+    font-family: Trebuchet MS;
+    font-size: 25px;
+    font-variant: small-caps;
+    color: #fff;
+    width: 45%;
 }
 
 .center{
@@ -131,7 +148,13 @@ input{
 .horizontalBlock{
     text-align: center;
     vertical-align: top;
-    width: 83%;
+    width: 45%;
+    display: inline-block;
+}
+
+.horizontalBlockProfile{
+    vertical-align: top;
+    width: 45%;
     display: inline-block;
 }
 
@@ -139,6 +162,40 @@ input{
     margin: 1em;
     padding: 1em;
     font-variant: small-caps;
+    text-shadow: 3px 1px #000000;
+}
+
+.btn {
+    border: none;
+    color: white;
+    padding: 14px 28px;
+    font-size: 25px;
+    cursor: pointer;
+    border-radius: 25px;
+}
+
+.info {
+    background-color: #2196F3;
+}
+
+.success {
+    background-color: #4CAF50;
+}
+
+.success:hover {
+    background-color: #46a049;
+}
+
+.danger {
+    background-color: #f44336;
+}
+
+.danger:hover {
+    background: #da190b;
+}
+
+.info:hover {
+    background: #0b7dda;
 }
 
 #profileTitle{
@@ -148,6 +205,7 @@ input{
     padding: 1em;
     border-radius: 25px;
     font-variant: small-caps;
+    text-shadow: 3px 1px #000000;
 }
 
 #profileBody{
