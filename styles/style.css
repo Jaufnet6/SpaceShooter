@@ -27,7 +27,37 @@ section{
     border-radius: 25px;
     float: right;
 }
+mid {
+    width: 80%;
+    height: 650px;
+    margin: 1em 1em 1em 1em;
+    padding: 1em;
+    border-radius: 25px;
+    float: right;
+}
+table {
+    font-family: Trebuchet MS;
+    border-collapse: collapse;
+    width: 100%;
+}
 
+td, th{
+
+    text-align: center;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #3B5C8F;
+
+}
+th{
+
+    background-color: darkblue;
+    font-variant: small-caps;
+    font-size: 25px;
+
+}
 nav ul {
     list-style-type: none;
     margin: 0;
