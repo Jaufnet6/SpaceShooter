@@ -6,33 +6,83 @@ body{
     background-color: #314178;
     font-family: Trebuchet MS;
     color: #fff;
+    width: 99%;
+    text-align: center;
 }
 
+aside {
+    width: 15%;
+    height: 650px;
+    margin: 1em 1em 1em 1em;
+    padding: 1em;
+    border-radius: 25px;
+    float: left;
+}
 
+section{
+    width: 15%;
+    height: 650px;
+    margin: 1em 1em 1em 1em;
+    padding: 1em;
+    border-radius: 25px;
+    float: right;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    font-variant: small-caps;
+    overflow: hidden;
+    background-color: #324890;
+}
+
+nav li {
+    float: left;
+    font-family: Trebuchet MS;
+    background-color: #324890;
+}
+
+nav li a {
+    display: block;
+    color: #fff;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+nav li a:hover {
+    background-color: #111;
+}
 
 a {
-    display:inline-block;
+    display: flex;
     color: #fff;
+    justify-content: center;
     padding: 30px;
-    size: 20px;
-    text-shadow: 3px 1px #000000;
-
-
-
-
+    size: 30px;
 }
 
 h1{
     margin: auto;
 }
 
-.center{
-    margin: auto;
-    text-align: center;
+.container{
+    background-color: #3B5C8F;
+    font-family: Trebuchet MS;
+    color: #fff;
 }
-
 
 #images {
     width: 850px;
     margin: auto;
+}
+
+#game{
+    display: inline-block;
+    width: 50%;
+    height: 650px;
+    border-radius: 25px;
+    background-color: #3B5C8F;
+    margin: 1em auto;
 }
