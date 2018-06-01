@@ -1,0 +1,33 @@
+<html>
+<head>
+  <title>Spaceshooter Logout</title>
+  <link rel="stylesheet" href="style_login.css"/>
+</head>
+
+<body>
+
+  <div class="loggedin-div" id="loggedin_div_id">
+    <h2>Logged In user</h2>
+    <p>Welcome to Spaceshooter. You are logged in.</p>
+
+    <button onclick="logout()">Logout</button>
+  </div>
+
+  <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyClmnMKDoyAKU7yEWJc21elBl663GsWGhg",
+      authDomain: "spaceshooter-ria.firebaseapp.com",
+      databaseURL: "https://spaceshooter-ria.firebaseio.com",
+      projectId: "spaceshooter-ria",
+      storageBucket: "spaceshooter-ria.appspot.com",
+      messagingSenderId: "778489924106"
+    };
+    firebase.initializeApp(config);
+  </script>
+  <script src="logout.js"></script>
+
+</body>
+
+</html>

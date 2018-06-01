@@ -1,0 +1,77 @@
+body{
+  background: #314178;
+  padding: 0px;
+  margin: 0px;
+  color: #fff;
+  font-family: Trebuchet MS;
+
+}
+
+input, button{
+  font-weight: 700;
+}
+
+.createAccountDiv {
+  display: none;
+}
+
+.main-div, .loggedin-div, .createAccountDiv{
+  width: 25%;
+  margin: 0px auto;
+  margin-top: 200px;
+  padding: 20px;
+  font-family: Trebuchet MS;
+}
+
+.main-div input, .createAccountDiv input{
+  display: block;
+  border: 1px solid #fff;
+  border-radius: 5px;
+  background: #314178;
+  padding: 15px;
+  outline: none;
+  width: 100%;
+  margin-bottom: 20px;
+  color: #fff;
+  font-weight: 700;
+}
+
+.main-div input:focus, .createAccountDiv input:focus{
+  border: 1px solid #777;
+  transition: 0.3s;
+  -webkit-transition: 0.3s;
+  -moz-transition:0.3s;
+}
+
+.main-div button, .loggedin-div button, .createAccountDiv button{
+  background: #fff;
+  border: 0px;
+  color: #314178;
+  font-size: 20px;
+  border-radius: 5px;
+  padding: 15px;
+  display: block;
+  width: 100%;
+  transition: 0.3s;
+  -webkit-transition: 0.3s;
+  -moz-transition:0.3s;
+}
+
+#createSuccess{
+  text-align: center;
+}
+
+#createButtonId, #backlogginButtonId{
+  margin-top: 20px;
+  font-size: 15px;
+  padding: 5px;
+  color: #fff;
+  background: #314178;
+}
+
+.main-div button:hover, .loggedin-div button:hover, .createAccountDiv button:hover{
+  background: #314178;
+  color: #fff;
+  border: 1px solid #fff;
+  cursor: pointer;
+}
