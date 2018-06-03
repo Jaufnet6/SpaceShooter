@@ -16,7 +16,7 @@ var Game = Class.extend({
 
 
         //declaration du canvas
-        this.canvas = new Canvas(504, 504);
+        this.canvas = new Canvas(504, 600);
 
         // declaration du input handeler
         this.input = new InputHandeler({
