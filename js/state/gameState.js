@@ -277,6 +277,7 @@ var GameState = State.extend({
                     i--;
                     nbBullet--;
 
+
                     //les points augmentent
                     // selon les aliens restant
                     // et selon le niveau de vague des aliens
