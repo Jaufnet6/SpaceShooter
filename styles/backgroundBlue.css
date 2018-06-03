@@ -1,0 +1,41 @@
+/* Default background : BLUE */
+
+body {
+    background-color: #314178;
+}
+
+nav ul {
+    background-color: #324890;
+}
+
+nav li {
+    background-color: #324890;
+}
+
+input {
+    background-color: #324890;
+}
+
+th {
+    background-color: #314178;
+}
+
+tr:nth-child(even) {
+    background-color: #3B5C8F;
+}
+
+.container {
+    background-color: #3B5C8F;
+}
+
+#game {
+    background-color: #3B5C8F;
+}
+
+#enterButton {
+    background: #fff;
+}
+
+#enterButton:hover {
+    background: #314178;
+}

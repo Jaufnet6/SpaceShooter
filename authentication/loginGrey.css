@@ -1,0 +1,21 @@
+/* GREY background */
+
+body {
+    background: #333333;
+}
+
+.main-div input, .createAccountDiv input {
+    background: #333333;
+}
+
+.main-div button, .loggedin-div button, .createAccountDiv button {
+    color: #333333;
+}
+
+#createButtonId, #backlogginButtonId {
+    background: #333333;
+}
+
+.main-div button:hover, .loggedin-div button:hover, .createAccountDiv button:hover {
+    background: #333333;
+}

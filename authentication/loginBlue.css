@@ -1,0 +1,21 @@
+/* Default background : BLUE */
+
+body {
+    background: #314178;
+}
+
+.main-div input, .createAccountDiv input {
+    background: #314178;
+}
+
+.main-div button, .loggedin-div button, .createAccountDiv button {
+    color: #314178;
+}
+
+#createButtonId, #backlogginButtonId {
+    background: #314178;
+}
+
+.main-div button:hover, .loggedin-div button:hover, .createAccountDiv button:hover {
+    background: #314178;
+}

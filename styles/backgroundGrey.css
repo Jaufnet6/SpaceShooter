@@ -1,0 +1,41 @@
+/* GREEN background */
+
+body {
+    background-color: #333333;
+}
+
+nav ul {
+    background-color: #a6a6a6;
+}
+
+nav li {
+    background-color: #a6a6a6;
+}
+
+input {
+    background-color: #a6a6a6;
+}
+
+th {
+    background-color: #333333;
+}
+
+tr:nth-child(even) {
+    background-color: #8c8c8c;
+}
+
+.container {
+    background-color: #8c8c8c;
+}
+
+#game {
+    background-color: #8c8c8c;
+}
+
+#enterButton {
+    background: #fff;
+}
+
+#enterButton:hover {
+    background: #333333;
+}

@@ -3,7 +3,6 @@
 }
 
 body{
-    background-color: #314178;
     font-family: Trebuchet MS;
     color: #fff;
     width: 99%;
@@ -27,7 +26,6 @@ main {
     font-weight: 700;
     margin-top: 100px;
     margin-bottom: 100px;
-    background: #fff;
     border: 0px;
     color: #314178;
     font-size: 20px;
@@ -41,7 +39,6 @@ main {
 }
 
 #enterButton:hover {
-    background: #314178;
     color: #fff;
     border: 1px solid #fff;
     cursor: pointer;
@@ -88,12 +85,7 @@ td, th{
     padding: 8px;
 }
 
-tr:nth-child(even) {
-    background-color: #3B5C8F;
-}
-
 th{
-    background-color: #314178;
     font-variant: small-caps;
     font-size: 25px;
     border-radius: 35px;
@@ -105,13 +97,11 @@ nav ul {
     padding: 0;
     font-variant: small-caps;
     overflow: hidden;
-    background-color: #324890;
 }
 
 nav li {
     float: left;
     font-family: Trebuchet MS;
-    background-color: #324890;
 }
 
 nav li a {
@@ -148,7 +138,6 @@ label{
 input{
     font-family: Trebuchet MS;
     font-size: 25px;
-    background-color: #324890;
     color: white;
 }
 
@@ -166,7 +155,6 @@ input{
 }
 
 .container{
-    background-color: #3B5C8F;
     font-family: Trebuchet MS;
     color: #fff;
     border-radius: 25px;
@@ -208,7 +196,7 @@ input{
 .info {
     background-color: #2196F3;
 }
-
+a
 .success {
     background-color: #4CAF50;
 }
@@ -253,7 +241,6 @@ input{
     width: 50%;
     height: 650px;
     border-radius: 25px;
-    background-color: #3B5C8F;
     margin: 1em auto;
 }
 
