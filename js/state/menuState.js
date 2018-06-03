@@ -21,7 +21,7 @@ var MenuState = State.extend({
 
         ctx.vectorText("Spaceshooters", 6, null,180)
         ctx.vectorText("push space to play", 2, null, 260);
-        ctx.vectorText("game developed by orevie", 1 , null, 300);
+       
 
     }
 
