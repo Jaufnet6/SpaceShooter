@@ -6,6 +6,8 @@
     <meta charset="UTF-8">
     <title>Space Invaders</title>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
     <!-- Lib files -->
     <script src="js/lib/class.js"></script>
 
@@ -36,10 +38,11 @@
         <li><a href="leaderboard.html">Leaderboard</a></li>
         <li><a href="profil.html">My account</a></li>
         <li><a href="authentication/logout.html">Log out</a></li>
-        <select id="chooseColor">
-            <option value="1">Military green</option>
-            <option value="2">Steel grey</option>
-            <option value="3">Deep blue</option>
+
+        <select id="chooseColor" onchange="changeColor(this)">
+            <option value="styles/backgroundGreen.css">Military green</option>
+            <option value="styles/backgroundGrey.css">Steel grey</option>
+            <option value="styles/backgroundBlue.css">Deep blue</option>
         </select>
     </ul>
 </nav>

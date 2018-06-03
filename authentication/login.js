@@ -22,9 +22,7 @@ function login() {
 
         document.getElementById('createSuccess').style.display = 'block';
         document.getElementById('createSuccess').innerHTML = errorMessage;
-
     });
-
 }
 
 //show create form

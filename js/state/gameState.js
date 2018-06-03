@@ -281,7 +281,7 @@ var GameState = State.extend({
                     //les points augmentent
                     // selon les aliens restant
                     // et selon le niveau de vague des aliens
-                    score += 51-nbAlien*lvl;
+                    score += (51-nbAlien)*lvl;
 
                     // augmente la vitesse en fonction du nombre d'alien restant
                     // dans le tableau actuel
