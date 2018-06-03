@@ -14,10 +14,7 @@ var
     canvasWidth,
     canvasHeight;
 
-
 ;
-
-
 
 var GameState = State.extend({
 
@@ -527,7 +524,7 @@ function SoundPool(maxSize) {
 
     };
 
-    //lance les son 
+    //lance les son
     this.get = function() {
         if(pool[currSound].currentTime == 0 || pool[currSound].ended) {
             pool[currSound].play();
