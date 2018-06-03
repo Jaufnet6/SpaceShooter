@@ -2,9 +2,63 @@
 <html lang="en">
 <header>
     <link rel="stylesheet" href="styles/style.css" type="text/css">
-    <link rel="stylesheet" href="styles/backgroundGrey.css" type="text/css">
+    <link rel="stylesheet" href="styles/backgroundBlue.css" type="text/css">
     <meta charset="UTF-8">
     <title>Space Invaders</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+
+        function changeColor() {
+            var color = localStorage.getItem("color")
+
+
+            switch (color) {
+
+                case 1 :
+                    // change les couleur si vert
+                    $("link[rel=stylesheet]").attr({href: "styles/backgroundGreen.css"})
+                    break;
+
+
+                case  2 :
+                    //change les couleurs si gris
+                    $("link[rel=stylesheet]").attr({href: "styles/backgroundGrey.css"})
+                    break;
+
+                case 3 :
+                    // change couleur bleu
+                    $("link[rel=stylesheet]").attr({href: "styles/backgroundBlue.css"})
+                    break;
+
+
+                default:
+                    // change couleur default bleu
+                    $("link[rel=stylesheet]").attr({href: "styles/backgroundBlue.css"})
+                    break;
+
+            }
+        }
+    </script>
+
+    <script>
+
+        var color = localStorage.getItem("color")
+
+
+        $('#chooseColor').val(color);
+
+        $("#chooseColor").change(function () {
+
+            colorvalue = $("#chooseColor option:selected ").val();
+
+
+            localStorage.setItem("color", colorvalue)
+            console.log(colorvalue);
+            changeColor();
+        });
+
+    </script>
+
 
     <!-- Lib files -->
     <script src="js/lib/class.js"></script>
@@ -53,6 +107,8 @@
             <option value="2">Steel grey</option>
             <option value="3">Deep blue</option>
         </select>
+
+
     </ul>
 </nav>
 <body class="center">
@@ -68,14 +124,14 @@
     <br/>
     <p>Compare your score with other players !</p>
 </aside>
-    <div>
-        <canvas>
-            <script>
-                var game = new Game();
-                game.run();
-            </script>
-        </canvas>
-    </div>
+<div>
+    <canvas>
+        <script>
+            var game = new Game();
+            game.run();
+        </script>
+    </canvas>
+</div>
 <section class="container">
     <h3>How to play</h3>
     <hr/>
