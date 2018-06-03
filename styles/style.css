@@ -141,6 +141,13 @@ input{
     color: white;
 }
 
+canvas {
+    position: absolute;
+    margin: 2.5em 0em 0em 0em;
+    left: 33%;
+    border-radius: 10px;
+}
+
 .profileBody{
     font-family: Trebuchet MS;
     font-size: 25px;
@@ -196,7 +203,7 @@ input{
 .info {
     background-color: #2196F3;
 }
-a
+
 .success {
     background-color: #4CAF50;
 }
@@ -215,6 +222,10 @@ a
 
 .info:hover {
     background: #0b7dda;
+}
+
+.divGame {
+    display: block;
 }
 
 #profileTitle{
@@ -255,4 +266,8 @@ a
     font-variant: small-caps;
     vertical-align: center;
     float: right;
+}
+
+#gameDiv{
+    width: 60%;
 }

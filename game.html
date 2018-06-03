@@ -2,7 +2,7 @@
 <html lang="en">
 <header>
     <link rel="stylesheet" href="styles/style.css" type="text/css">
-    <link rel="stylesheet" href="styles/backgroundGrey.css" type="text/css">
+    <link rel="stylesheet" href="styles/backgroundGreen.css" type="text/css">
     <meta charset="UTF-8">
     <title>Space Invaders</title>
 
@@ -29,18 +29,6 @@
     <audio id="gameOver">
         <source src="audio/gameOver.wav" type="audio/wav">
     </audio>
-    <style>
-        canvas {
-            background-color: #000;
-            display: block;
-            position: absolute;
-            margin: auto;
-            top: 2em;
-            bottom: 0;
-            left: 0;
-            right: 0;
-        }
-    </style>
 </header>
 <nav>
     <ul>
@@ -55,40 +43,38 @@
         </select>
     </ul>
 </nav>
-<body class="center">
-<aside class="container">
-    <h3>Are you the hero the galaxy needs ?</h3>
-    <hr/>
-    <br/>
-    <p>Keep calm and shoot the aliens !</p>
-    <br/>
-    <p>Destroy waves after waves of enemy spaceships without destroying your own greens bases</p>
-    <br/>
-    <p>The more you kill aliens, the more you collect points</p>
-    <br/>
-    <p>Compare your score with other players !</p>
-</aside>
-    <div>
-        <canvas>
-            <script>
-                var game = new Game();
-                game.run();
-            </script>
-        </canvas>
-    </div>
-<section class="container">
-    <h3>How to play</h3>
-    <hr/>
-    <br/>
-    <p>Move your spaceship</p>
-    <br/>
-    <img src="images/keyboard_key_left.png" height="64" width="64"/>
-    <img src="images/keyboard_key_right.png" height="64" width="64"/>
-    <br/>
-    <br/>
-    <p>Shoot</p>
-    <br/>
-    <img src="images/PC_sbar.png" height="82" width="128"/>
-</section>
+<body>
+<div class="divGame">
+    <aside class="container">
+        <h3>Are you the hero the galaxy needs ?</h3>
+        <hr/>
+        <br/>
+        <p>Keep calm and shoot the aliens !</p>
+        <br/>
+        <p>Destroy waves after waves of enemy spaceships without destroying your own greens bases</p>
+        <br/>
+        <p>The more you kill aliens, the more you collect points</p>
+        <br/>
+        <p>Compare your score with other players !</p>
+    </aside>
+    <script>
+        var game = new Game();
+        game.run();
+    </script>
+    <section class="container">
+        <h3>How to play</h3>
+        <hr/>
+        <br/>
+        <p>Move your spaceship</p>
+        <br/>
+        <img src="images/keyboard_key_left.png" height="64" width="64"/>
+        <img src="images/keyboard_key_right.png" height="64" width="64"/>
+        <br/>
+        <br/>
+        <p>Shoot</p>
+        <br/>
+        <img src="images/PC_sbar.png" height="82" width="128"/>
+    </section>
+</div>
 </body>
 </html>

@@ -39,3 +39,7 @@ tr:nth-child(even) {
 #enterButton:hover {
     background: #006600;
 }
+
+canvas {
+    background-color: #003300;
+}
