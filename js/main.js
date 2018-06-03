@@ -26,8 +26,7 @@ var Game = Class.extend({
             enter:    13
         });
 
-        // set stroke style to white, since canvas has black
-        // bacground
+        // CHange la couleur des lignes du polygone
         this.canvas.ctx.strokeStyle = "#fff";
 
         // initialise les sprites en chargeant une image
