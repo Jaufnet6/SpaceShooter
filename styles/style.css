@@ -248,3 +248,11 @@ a
     font-size: 25px;
     font-variant: small-caps;
 }
+
+#chooseColor{
+    margin: 10px;
+    border-radius: 25px;
+    font-variant: small-caps;
+    vertical-align: center;
+    float: right;
+}
