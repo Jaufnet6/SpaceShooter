@@ -27,7 +27,6 @@
         </select>
     </ul>
 
-
 </nav>
 <body onload="changeColorTheme()">
 <div id="profileTitle" class="container">
@@ -68,20 +67,18 @@
         </tr>
     </table>
     <div class="center">
-        <button class="profileButton" onclick="showMap()" id="WhereAMIButton">Where am I ?</button>
+        <button class="profileButton" onclick="window.open('localisationMap.html')" id="WhereAMIButton">Where am I ?</button>
     </div>
     <div class="center">
         <button class="profileButton" id="editProfileButton" onclick="editProfile()">Edit profile</button>
         <button class="profileButton" id="okProfileButton" style="display: none" onclick="okProfile()">OK</button>
         <button class="profileButton" id="cancelProfileButton" style="display: none" onclick="cancelProfile()">Cancel</button>
     </div>
-
 </main>
 </body>
 </html>
 
 <script>
-
     var imageLoader;
     var dropbox;
 
