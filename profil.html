@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script src = "WebMap.js"></script>
     <link rel="stylesheet" href="styles/style.css" type="text/css">
     <link rel="stylesheet" href="styles/backgroundGrey.css" type="text/css" id="colorCSS">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+    <meta charset="UTF-8">
 
     <!-- changing colors -->
     <script src="changeColor.js"></script>
@@ -35,17 +35,9 @@
     </ul>
     <script>
         function showMap() {
-            var divMap = document.getElementById("displayMap");
-            if (divMap.style.display !== "none") {
-                divMap.style.display = "none";
-            }
-            else {
-                divMap.style.display = "block";
-
-            }
-
+            initMap();
+            document.getElementById("displayMap").style.display = "block";
         }
-
     </script>
 
     <script async defer
@@ -93,9 +85,6 @@
     </table>
     <div class="center">
         <button class="profileButton" onclick="showMap()" id="WhereAMIButton">Where am I ?</button>
-        <div id="displayMap" style="display:none;">
-            <p>Sasdf</p>
-        </div>
     </div>
     <div class="center">
         <button class="profileButton" id="editProfileButton" onclick="editProfile()">Edit profile</button>
@@ -103,49 +92,47 @@
         <button class="profileButton" id="cancelProfileButton" style="display: none" onclick="cancelProfile()">Cancel</button>
     </div>
 
-    <div id="displayMap" style="display: none">
-
-            <script>
-                function initMap() {
-                    var map = new google.maps.Map(document.getElementById('displayMap'), {
-                        center: {lat: -34.397, lng: 150.644},
-                        zoom: 6
-                    });
-                    var infoWindow = new google.maps.InfoWindow({map: map});
-
-                    // Try HTML5 geolocation.
-                    if (navigator.geolocation) {
-                        navigator.geolocation.getCurrentPosition(function(position) {
-                            var pos = {
-                                lat: position.coords.latitude,
-                                lng: position.coords.longitude
-                            };
-
-                            infoWindow.setPosition(pos);
-                            infoWindow.setContent('Location found.');
-                            map.setCenter(pos);
-                        }, function() {
-                            handleLocationError(true, infoWindow, map.getCenter());
-                        });
-                    } else {
-                        // Browser doesn't support Geolocation
-                        handleLocationError(false, infoWindow, map.getCenter());
-                    }
-                }
-
-                function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-                    infoWindow.setPosition(pos);
-                    infoWindow.setContent(browserHasGeolocation ?
-                        'Error: The Geolocation service failed.' :
-                        'Error: Your browser doesn\'t support geolocation.');
-                }
-            </script>
-
-    </div>
+    <div id="displayMap" style="display: none"></div>
 
 </main>
 </body>
 </html>
+
+<script>
+    function initMap() {
+        var map = new google.maps.Map(document.getElementById('displayMap'), {
+            center: {lat: -34.397, lng: 150.644},
+            zoom: 6
+        });
+        var infoWindow = new google.maps.InfoWindow({map: map});
+
+        // Try HTML5 geolocation.
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function(position) {
+                var pos = {
+                    lat: position.coords.latitude,
+                    lng: position.coords.longitude
+                };
+
+                infoWindow.setPosition(pos);
+                infoWindow.setContent('Location found.');
+                map.setCenter(pos);
+            }, function() {
+                handleLocationError(true, infoWindow, map.getCenter());
+            });
+        } else {
+            // Browser doesn't support Geolocation
+            handleLocationError(false, infoWindow, map.getCenter());
+        }
+    }
+
+    function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+        infoWindow.setPosition(pos);
+        infoWindow.setContent(browserHasGeolocation ?
+            'Error: The Geolocation service failed.' :
+            'Error: Your browser doesn\'t support geolocation.');
+    }
+</script>
 
 <script>
 
