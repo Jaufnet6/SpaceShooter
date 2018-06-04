@@ -14,9 +14,9 @@
     <style>
         /* Always set the map height explicitly to define the size of the div
          * element that contains the map. */
-        #canvasMap {
-            height: 10%;
-            width: 10%;
+        #displayMap {
+            height: 30%;
+            width: 30%;
         }
     </style>
 </head>
@@ -40,15 +40,16 @@
                 divMap.style.display = "none";
             }
             else {
-                divMap.style.display = "inline";
-                initMap();
+                divMap.style.display = "block";
+
             }
+
         }
 
     </script>
 
     <script async defer
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB7sn2sv359qJN6eZm3VIJ1yA2X6rLlBUk&callback=initMap">
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCmA6Y341KdSyqOxkSo5D6NcCyPDCR1jYM&callback=initMap">
     </script>
 
 </nav>
@@ -100,13 +101,46 @@
         <button class="profileButton" id="editProfileButton" onclick="editProfile()">Edit profile</button>
         <button class="profileButton" id="okProfileButton" style="display: none" onclick="okProfile()">OK</button>
         <button class="profileButton" id="cancelProfileButton" style="display: none" onclick="cancelProfile()">Cancel</button>
-        <button class="btn info" onclick="showMap()" id="WhereAMIButton">Where am I ?</button>
+        <button class="profileButton" id="WhereAMIButton" onclick="showMap()" >Where am I ?</button>
     </div>
 
     <div id="displayMap" style="display: none">
-        <canvas id ="canvasMap">
 
-        </canvas>
+            <script>
+                function initMap() {
+                    var map = new google.maps.Map(document.getElementById('displayMap'), {
+                        center: {lat: -34.397, lng: 150.644},
+                        zoom: 6
+                    });
+                    var infoWindow = new google.maps.InfoWindow({map: map});
+
+                    // Try HTML5 geolocation.
+                    if (navigator.geolocation) {
+                        navigator.geolocation.getCurrentPosition(function(position) {
+                            var pos = {
+                                lat: position.coords.latitude,
+                                lng: position.coords.longitude
+                            };
+
+                            infoWindow.setPosition(pos);
+                            infoWindow.setContent('Location found.');
+                            map.setCenter(pos);
+                        }, function() {
+                            handleLocationError(true, infoWindow, map.getCenter());
+                        });
+                    } else {
+                        // Browser doesn't support Geolocation
+                        handleLocationError(false, infoWindow, map.getCenter());
+                    }
+                }
+
+                function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+                    infoWindow.setPosition(pos);
+                    infoWindow.setContent(browserHasGeolocation ?
+                        'Error: The Geolocation service failed.' :
+                        'Error: Your browser doesn\'t support geolocation.');
+                }
+            </script>
 
     </div>
 
