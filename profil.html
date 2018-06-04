@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script src = "WebMap.js">
-    </script>
-
+    <script src = "WebMap.js"></script>
     <link rel="stylesheet" href="styles/style.css" type="text/css">
     <link rel="stylesheet" href="styles/backgroundGrey.css" type="text/css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>    <meta charset="UTF-8">
@@ -12,8 +10,9 @@
     <style>
         /* Always set the map height explicitly to define the size of the div
          * element that contains the map. */
-        #map {
-            height: 50%;
+        #canvasMap {
+            height: 10%;
+            width: 10%;
         }
     </style>
 </head>
@@ -29,13 +28,10 @@
             var divMap = document.getElementById("displayMap");
             if (divMap.style.display !== "none") {
                 divMap.style.display = "none";
-
             }
             else {
-                divMap.style.display = "block";
+                divMap.style.display = "inline";
                 initMap();
-
-
             }
         }
 
@@ -80,16 +76,10 @@
                 <input type="email" id="email" disabled placeholder="Player email">
             </p>
             <p class="profileBody">GET_SCORE</p>
-            <button class="btn info" onclick="showMap()" id="WhereAMIButton">Where am I ?</button>
-        </div>
-
-
-        <div id="displayMap" style="display:none;">
-            <p>Sasdf</p>
-
-
 
         </div>
+
+
 
 
     </div>
@@ -97,7 +87,16 @@
         <button class="profileButton" id="editProfileButton" onclick="editProfile()">Edit profile</button>
         <button class="profileButton" id="okProfileButton" style="display: none" onclick="okProfile()">OK</button>
         <button class="profileButton" id="cancelProfileButton" style="display: none" onclick="cancelProfile()">Cancel</button>
+        <button class="btn info" onclick="showMap()" id="WhereAMIButton">Where am I ?</button>
     </div>
+
+    <div id="displayMap" style="display: none">
+        <canvas id ="canvasMap">
+
+        </canvas>
+
+    </div>
+
 </main>
 </body>
 </html>
