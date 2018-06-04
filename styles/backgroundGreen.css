@@ -13,7 +13,7 @@ nav li {
 }
 
 input {
-    background-color: #00802b;
+    background-color: #006600;
 }
 
 th {
@@ -38,6 +38,11 @@ tr:nth-child(even) {
 
 #enterButton:hover {
     background: #006600;
+}
+
+.profileButton {
+    background: #006600;
+    color: #fff;
 }
 
 canvas {

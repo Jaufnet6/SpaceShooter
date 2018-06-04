@@ -2,10 +2,12 @@
 <html lang="en">
 <header>
     <link rel="stylesheet" href="styles/style.css" type="text/css">
-    <link rel="stylesheet" href="styles/backgroundGrey.css" type="text/css">
+    <link rel="stylesheet" href="styles/backgroundGrey.css" type="text/css" id="colorCSS">
     <meta charset="UTF-8">
-    <title>Space Shooter</title>
+    <title>SPACESHOOTERS - LEADERBOARD</title>
 
+    <!-- changing colors -->
+    <script src="changeColor.js"></script>
 
 </header>
 <nav>
@@ -14,9 +16,15 @@
         <li><a href="leaderboard.html">Leaderboard</a></li>
         <li><a href="profil.html">My account</a></li>
         <li><a href="index.html">Log out</a></li>
+
+        <select id="chooseColor" onchange="changeColor(this)">
+            <option value="styles/backgroundGreen.css">Military green</option>
+            <option value="styles/backgroundGrey.css">Steel grey</option>
+            <option value="styles/backgroundBlue.css">Deep blue</option>
+        </select>
     </ul>
 </nav>
-<body>
+<body onload="changeColorTheme()">
 <aside class="container">
     <h3>Here is the LeaderBoard !</h3>
     <hr/>
@@ -39,7 +47,6 @@
             <th>Rank</th>
             <th>Name</th>
             <th>Score</th>
-            <th>Country</th>
         </tr>
         </thead>
         <tbody>
