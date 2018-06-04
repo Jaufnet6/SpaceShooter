@@ -40,6 +40,11 @@ tr:nth-child(even) {
     background: #006600;
 }
 
+.profileButton {
+    background: #006600;
+    color: #fff;
+}
+
 canvas {
     background-color: #003300;
 }

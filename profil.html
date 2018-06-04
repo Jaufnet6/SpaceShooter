@@ -5,9 +5,13 @@
     </script>
 
     <link rel="stylesheet" href="styles/style.css" type="text/css">
-    <link rel="stylesheet" href="styles/backgroundGrey.css" type="text/css">
+    <link rel="stylesheet" href="styles/backgroundGrey.css" type="text/css" id="colorCSS">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>    <meta charset="UTF-8">
     <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+
+    <!-- changing colors -->
+    <script src="changeColor.js"></script>
+
     <title>SPACESHOOTERS - PROFILE</title>
     <style>
         /* Always set the map height explicitly to define the size of the div
@@ -23,6 +27,12 @@
         <li><a href="leaderboard.html">Leaderboard</a></li>
         <li><a href="profil.html">My account</a></li>
         <li><a href="index.html">Log out</a></li>
+
+        <select id="chooseColor" onchange="changeColor(this)">
+            <option value="styles/backgroundGreen.css">Military green</option>
+            <option value="styles/backgroundGrey.css">Steel grey</option>
+            <option value="styles/backgroundBlue.css">Deep blue</option>
+        </select>
     </ul>
     <script>
         function showMap() {
@@ -46,7 +56,7 @@
     </script>
 
 </nav>
-<body>
+<body onload="changeColorTheme()">
 <div id="profileTitle" class="container">
     <h2 class="center">My Account</h2>
 </div>
@@ -58,40 +68,37 @@
     <br/>
     <hr/>
     <br/>
-    <div class="horizontalRow">
-        <div class="horizontalBlockProfile">
-            <p>
+    <table id="tableProfile">
+        <tr>
+            <td class="tdProfile">
                 <label for="username">Username</label>
-            </p>
-            <p>
-                <label for="email">Email address</label>
-            </p>
-            <p class="profileBody">Best score</p>
-            <p class="profileBody">Country</p>
-
-
-
-        </div>
-        <div class="horizontalBlockProfile">
-            <p>
+            </td>
+            <td class="tdProfile">
                 <input type="text" id="username" disabled placeholder="Player name">
-            </p>
-            <p>
+            </td>
+        </tr>
+        <tr>
+            <td class="tdProfile">
+                <label for="email">Email address</label>
+            </td>
+            <td class="tdProfile">
                 <input type="email" id="email" disabled placeholder="Player email">
-            </p>
-            <p class="profileBody">GET_SCORE</p>
-            <button class="btn info" onclick="showMap()" id="WhereAMIButton">Where am I ?</button>
-        </div>
-
-
+            </td>
+        </tr>
+        <tr>
+            <td class="tdProfile">
+                <div class="profileBody">Best score</div>
+            </td>
+            <td class="tdProfile">
+                <div class="profileBody">GET_SCORE</div>
+            </td>
+        </tr>
+    </table>
+    <div class="center">
+        <button class="profileButton" onclick="showMap()" id="WhereAMIButton">Where am I ?</button>
         <div id="displayMap" style="display:none;">
             <p>Sasdf</p>
-
-
-
         </div>
-
-
     </div>
     <div class="center">
         <button class="profileButton" id="editProfileButton" onclick="editProfile()">Edit profile</button>

@@ -47,7 +47,7 @@ main {
 .profileButton{
     font-weight: 700;
     margin-top: 20px;
-    margin-bottom: 5px;
+    margin-bottom: 20px;
     width: 18%;
     border: 1px;
     color: #000;
@@ -76,6 +76,13 @@ main {
 #cancelProfileButton:hover {
     color: #fff;
     background: #800000;
+    border: 1px solid #fff;
+    cursor: pointer;
+}
+
+#WhereAMIButton:hover {
+    color: #fff;
+    background: #333333;
     border: 1px solid #fff;
     cursor: pointer;
 }
@@ -115,10 +122,17 @@ table {
     width: 100%;
 }
 
-td, th{
+#tableProfile{
+    text-align: left;
+}
 
+td, th{
     text-align: center;
     padding: 8px;
+}
+
+.tdProfile {
+    text-align: left;
 }
 
 th{
