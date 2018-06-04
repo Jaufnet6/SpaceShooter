@@ -1,14 +1,14 @@
 function changeColor(a){
     var newColor = a.value;
-    alert("new Color: "+ newColor);
-    getLocalStorageColor(newColor);
-    localStorage.setItem("color", value);
+    localStorage.setItem("color", newColor);
+    changeColorTheme();
 }
 
-function getLocalStorageColor(newColor){
-    var oldColor = localStorage.getItem("color");
-    alert("OldColor:" + oldColor);
-    var cssLink = $('link[href*=oldColor]');
-
-    cssLink.replaceWith('<link href=newColor type="text/css" rel="stylesheet">');
+function changeColorTheme(){
+    if (localStorage.getItem("color") == null){
+        localStorage.setItem("color", "styles/backgroundBlue.css");
+    }
+    var cssLink = document.getElementById("colorCSS");
+    cssLink.setAttribute("href", localStorage.getItem("color"));
+    window.reload();
 }

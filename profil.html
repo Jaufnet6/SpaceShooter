@@ -2,9 +2,16 @@
 <html lang="en">
 <head>
     <link rel="stylesheet" href="styles/style.css" type="text/css">
-    <link rel="stylesheet" href="styles/backgroundGrey.css" type="text/css">
+    <link rel="stylesheet" href="styles/backgroundGrey.css" type="text/css" id="colorCSS">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
     <meta charset="UTF-8">
+
+    <!-- changing colors -->
+    <script src="changeColor.js"></script>
+
     <title>SPACESHOOTERS - PROFILE</title>
+
 </head>
 <nav>
     <ul>
@@ -12,83 +19,151 @@
         <li><a href="leaderboard.html">Leaderboard</a></li>
         <li><a href="profil.html">My account</a></li>
         <li><a href="index.html">Log out</a></li>
+
+        <select id="chooseColor" onchange="changeColor(this)">
+            <option value="styles/backgroundGreen.css">Military green</option>
+            <option value="styles/backgroundGrey.css">Steel grey</option>
+            <option value="styles/backgroundBlue.css">Deep blue</option>
+        </select>
     </ul>
+
 </nav>
-<body>
+<body onload="changeColorTheme()">
 <div id="profileTitle" class="container">
     <h2 class="center">My Account</h2>
 </div>
 <main class="container">
-    <div class="center">
-        <img id="profilePic" class="center" src="images/default-user.png" width="150px"/>
+    <div id="uploader" class="center" onclick="$('#filePhoto').click()">
+        <img id="profilePic" class="center" src="images/default-user.png" width="200px"/>
     </div>
+    <input type="file" id="filePhoto" disabled>
     <br/>
     <hr/>
     <br/>
-    <div class="horizontalRow">
-        <div class="horizontalBlockProfile">
-            <p>
+    <table id="tableProfile">
+        <tr>
+            <td class="tdProfile">
                 <label for="username">Username</label>
-            </p>
-            <p>
-                <label for="email">Email address</label>
-            </p>
-            <p class="profileBody">Best score</p>
-            <p class="profileBody">Country</p>
-
-
-        </div>
-        <div class="horizontalBlockProfile">
-            <p>
+            </td>
+            <td class="tdProfile">
                 <input type="text" id="username" disabled placeholder="Player name">
-            </p>
-            <p>
+            </td>
+        </tr>
+        <tr>
+            <td class="tdProfile">
+                <label for="email">Email address</label>
+            </td>
+            <td class="tdProfile">
                 <input type="email" id="email" disabled placeholder="Player email">
-            </p>
-            <p class="profileBody">GET_SCORE</p>
-            <p class="profileBody">COUNTRY_PIC</p>
-        </div>
+            </td>
+        </tr>
+        <tr>
+            <td class="tdProfile">
+                <div class="profileBody">Best score</div>
+            </td>
+            <td class="tdProfile">
+                <div class="profileBody">GET_SCORE</div>
+            </td>
+        </tr>
+    </table>
+    <div class="center">
+        <button class="profileButton" onclick="window.open('localisationMap.html')" id="WhereAMIButton">Where am I ?</button>
     </div>
     <div class="center">
-        <button class="btn info" id="editProfileButton" onclick="editProfile()">Edit profile</button>
-        <button class="btn success" id="okProfileButton" style="display: none" onclick="okProfile()">OK</button>
-        <button class="btn danger" id="cancelProfileButton" style="display: none" onclick="cancelProfile()">Cancel</button>
+        <button class="profileButton" id="editProfileButton" onclick="editProfile()">Edit profile</button>
+        <button class="profileButton" id="okProfileButton" style="display: none" onclick="okProfile()">OK</button>
+        <button class="profileButton" id="cancelProfileButton" style="display: none" onclick="cancelProfile()">Cancel</button>
     </div>
 </main>
 </body>
 </html>
 
 <script>
+    var imageLoader;
+    var dropbox;
+
+    function dragNDrop(){
+        imageLoader = document.getElementById('filePhoto');
+        imageLoader.addEventListener('change', handleImage, false);
+        function handleImage(e){
+            var reader = new FileReader();
+            reader.onload = function (event) {
+                $('#uploader img').attr('src', event.target.result);
+            }
+            reader.readAsDataURL(e.target.files[0]);
+        }
+
+        dropbox = document.getElementById("uploader");
+        dropbox.addEventListener("dragenter", dragenter, false);
+        dropbox.addEventListener("dragover", dragover, false);
+        dropbox.addEventListener("drop", drop, false);
+
+        function dragenter(e) {
+            e.stopPropagation();
+            e.preventDefault();
+        }
+
+        function dragover(e){
+            e.stopPropagation();
+            e.preventDefault();
+        }
+
+        function drop(e){
+            e.stopPropagation();
+            e.preventDefault();
+            var dt = e.dataTransfer;
+            var files = dt.files;
+
+            imageLoader.files = files;
+        }
+    }
+
+    function removeDragNDrop(){
+        dropbox = null;
+        imageLoader = null;
+    }
+
     function editProfile() {
-        var profilePicture = document.getElementById("profilePic");
         //Enable drag&drop on picture
+        dragNDrop();
+        //Input are now editable
         document.getElementById("username").disabled = false;
         document.getElementById("email").disabled = false;
+        //Edit button disappears
         document.getElementById("editProfileButton").style.display = "none";
+        //OK and cancel buttons appear
         document.getElementById("okProfileButton").style.display = "inline";
         document.getElementById("cancelProfileButton").style.display = "inline";
     }
 
     function okProfile(){
-        var profilePicture = document.getElementById("profilePic");
         //Disable drag&drop on picture
+        removeDragNDrop();
+        //Inputs are not editable anymore
         document.getElementById("username").disabled = true;
         document.getElementById("email").disabled = true;
+        //Edit button reappears
         document.getElementById("editProfileButton").style.display = "inline";
+        //OK and cancel buttons disappear
         document.getElementById("okProfileButton").style.display = "none";
         document.getElementById("cancelProfileButton").style.display = "none";
         //DB access to update username/email/profile picture
+
     }
 
     function cancelProfile(){
-        var profilePicture = document.getElementById("profilePic");
-        //Disable drag&drop on picture + set old picture
-        document.getElementById("username").disabled = true;
+        //Disable drag&drop on picture
+        removeDragNDrop();
         //Set old username
-        document.getElementById("email").disabled = true;
+        document.getElementById("username").disabled = true;
         //Set old email
+        document.getElementById("email").disabled = true;
+        //Edit button reappears
         document.getElementById("editProfileButton").style.display = "inline";
+        //OK and cancel buttons disappear
         document.getElementById("okProfileButton").style.display = "none";
         document.getElementById("cancelProfileButton").style.display = "none";
+        //Reload old elements from DB (username/email/profile)
+
     }
 </script>
