@@ -44,6 +44,42 @@ main {
     cursor: pointer;
 }
 
+.profileButton{
+    font-weight: 700;
+    margin-top: 20px;
+    margin-bottom: 5px;
+    width: 18%;
+    border: 1px;
+    color: #000;
+    font-size: 20px;
+    border-radius: 5px;
+    padding: 15px;
+    transition: 0.3s;
+    -webkit-transition: 0.3s;
+    -moz-transition:0.3s;
+}
+
+#editProfileButton:hover {
+    color: #fff;
+    background: #333333;
+    border: 1px solid #fff;
+    cursor: pointer;
+}
+
+#okProfileButton:hover {
+    color: #fff;
+    background: #006600;
+    border: 1px solid #fff;
+    cursor: pointer;
+}
+
+#cancelProfileButton:hover {
+    color: #fff;
+    background: #800000;
+    border: 1px solid #fff;
+    cursor: pointer;
+}
+
 aside {
     width: 15%;
     height: 650px;
@@ -136,9 +172,23 @@ label{
 }
 
 input{
-    font-family: Trebuchet MS;
-    font-size: 25px;
-    color: white;
+    font-weight: 700;
+    font-size: 18px;
+    display: block;
+    border: 1px solid #fff;
+    border-radius: 5px;
+    padding: 15px;
+    outline: none;
+    width: 100%;
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+input:focus{
+    border: 1px solid #777;
+    transition: 0.3s;
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
 }
 
 canvas {
@@ -191,39 +241,6 @@ canvas {
     text-shadow: 3px 1px #000000;
 }
 
-.btn {
-    border: none;
-    color: white;
-    padding: 14px 28px;
-    font-size: 25px;
-    cursor: pointer;
-    border-radius: 25px;
-}
-
-.info {
-    background-color: #2196F3;
-}
-
-.success {
-    background-color: #4CAF50;
-}
-
-.success:hover {
-    background-color: #46a049;
-}
-
-.danger {
-    background-color: #f44336;
-}
-
-.danger:hover {
-    background: #da190b;
-}
-
-.info:hover {
-    background: #0b7dda;
-}
-
 .divGame {
     display: block;
 }
@@ -270,4 +287,15 @@ canvas {
 
 #gameDiv{
     width: 60%;
+}
+
+#filePhoto{
+    display: none;
+    cursor:pointer;
+}
+
+#uploader{
+    width: 200px;
+    height: 200px;
+    cursor: pointer;
 }
