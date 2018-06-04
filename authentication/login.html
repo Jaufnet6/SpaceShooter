@@ -1,47 +1,47 @@
 <html>
 <head>
-    <title>Spaceshooter Login</title>
-    <link rel="stylesheet" href="style_login.css"/>
-    <link rel="stylesheet" href="loginGrey.css"/>
+  <title>Spaceshooter Login</title>
+  <link rel="stylesheet" href="style_login.css"/>
+  <link rel="stylesheet" href="loginGrey.css"/>
 </head>
 
 <body>
 
-<div class="main-div" id="main_div_id">
+  <div class="main-div" id="main_div_id">
     <h2>Spaceshooter Login</h2>
     <input type="email" placeholder="Email..." id="email_field"/>
     <input type="password" placeholder="Password..." id="password_field"/>
 
     <button onclick="login()">Start</button>
     <button onclick="createAccount()" id="createButtonId">Create an account</button>
-</div>
+  </div>
 
-<div class="createAccountDiv" id="createAccountDivId">
+  <div class="createAccountDiv" id="createAccountDivId">
     <h2>Spaceshooter Account Creation</h2>
+    <input type="text" placeholder="Username..." id="usernameCreation_Field"/>
     <input type="email" placeholder="Email..." id="emailCreation_field"/>
     <input type="password" placeholder="Password..." id="passwordCreation_field"/>
     <input type="password" placeholder="Confirm Password..." id="passwordCreation2_field"/>
 
     <button onclick="createUser()">Start Enjoying</button>
     <button onclick="backToSignIn()" id="backlogginButtonId">Back to Login</button>
-</div>
-
-<div class="errorDiv" id="error_div_id">
+  </div>
+  <div class="errorDiv" id="error_div_id">
     <p id="createSuccess"></p>
-</div>
+  </div>
 
-<script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
-<script>
-    // Initialize Firebase
-    var config = {
-        apiKey: "AIzaSyClmnMKDoyAKU7yEWJc21elBl663GsWGhg",
-        authDomain: "spaceshooter-ria.firebaseapp.com",
-        databaseURL: "https://spaceshooter-ria.firebaseio.com",
-        projectId: "spaceshooter-ria",
-        storageBucket: "spaceshooter-ria.appspot.com",
-        messagingSenderId: "778489924106"
-    };
-    firebase.initializeApp(config);
+  <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
+  <script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyCmA6Y341KdSyqOxkSo5D6NcCyPDCR1jYM",
+    authDomain: "spaceshooter-ria.firebaseapp.com",
+    databaseURL: "https://spaceshooter-ria.firebaseio.com",
+    projectId: "spaceshooter-ria",
+    storageBucket: "spaceshooter-ria.appspot.com",
+    messagingSenderId: "778489924106"
+  };
+  firebase.initializeApp(config);
 </script>
 <script src="login.js"></script>
 
