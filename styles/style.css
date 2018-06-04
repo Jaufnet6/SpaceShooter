@@ -166,7 +166,7 @@ h1{
 
 label{
     font-family: Trebuchet MS;
-    font-size: 25px;
+    font-size: 18px;
     font-variant: small-caps;
     color: #fff;
 }
@@ -179,7 +179,7 @@ input{
     border-radius: 5px;
     padding: 15px;
     outline: none;
-    width: 100%;
+    width: 50%;
     margin-bottom: 20px;
     color: #fff;
 }
@@ -200,7 +200,7 @@ canvas {
 
 .profileBody{
     font-family: Trebuchet MS;
-    font-size: 25px;
+    font-size: 18px;
     font-variant: small-caps;
     color: #fff;
     width: 45%;
