@@ -1,11 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src = "WebMap.js">
+    </script>
+
     <link rel="stylesheet" href="styles/style.css" type="text/css">
     <link rel="stylesheet" href="styles/backgroundGrey.css" type="text/css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>    <meta charset="UTF-8">
     <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
     <title>SPACESHOOTERS - PROFILE</title>
+    <style>
+        /* Always set the map height explicitly to define the size of the div
+         * element that contains the map. */
+        #map {
+            height: 50%;
+        }
+    </style>
 </head>
 <nav>
     <ul>
@@ -14,6 +24,27 @@
         <li><a href="profil.html">My account</a></li>
         <li><a href="index.html">Log out</a></li>
     </ul>
+    <script>
+        function showMap() {
+            var divMap = document.getElementById("displayMap");
+            if (divMap.style.display !== "none") {
+                divMap.style.display = "none";
+
+            }
+            else {
+                divMap.style.display = "block";
+                initMap();
+
+
+            }
+        }
+
+    </script>
+
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB7sn2sv359qJN6eZm3VIJ1yA2X6rLlBUk&callback=initMap">
+    </script>
+
 </nav>
 <body>
 <div id="profileTitle" class="container">
@@ -37,6 +68,9 @@
             </p>
             <p class="profileBody">Best score</p>
             <p class="profileBody">Country</p>
+
+
+
         </div>
         <div class="horizontalBlockProfile">
             <p>
@@ -46,8 +80,18 @@
                 <input type="email" id="email" disabled placeholder="Player email">
             </p>
             <p class="profileBody">GET_SCORE</p>
-            <p class="profileBody">COUNTRY_PIC</p>
+            <button class="btn info" onclick="showMap()" id="WhereAMIButton">Where am I ?</button>
         </div>
+
+
+        <div id="displayMap" style="display:none;">
+            <p>Sasdf</p>
+
+
+
+        </div>
+
+
     </div>
     <div class="center">
         <button class="profileButton" id="editProfileButton" onclick="editProfile()">Edit profile</button>
