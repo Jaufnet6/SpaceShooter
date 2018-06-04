@@ -68,6 +68,7 @@ function createUser() {
 
 }
 
+
 //Add new user to database
 function setUserData(userId, username, email){
   firebase.database().ref('users/' + userId).set({
