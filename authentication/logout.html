@@ -2,10 +2,13 @@
 <head>
   <title>SPACESHOOTERS - GOODBYE !</title>
   <link rel="stylesheet" href="style_login.css"/>
-  <link rel="stylesheet" href="loginGrey.css"/>
+  <link rel="stylesheet" href="loginGrey.css" id="colorCSS"/>
+
+  <!-- changing colors -->
+  <script src="changeColorLogin.js"></script>
 </head>
 
-<body>
+<body onload="changeColorTheme()">
 
   <div class="loggedin-div" id="loggedin_div_id">
     <h2>Logged In user</h2>
