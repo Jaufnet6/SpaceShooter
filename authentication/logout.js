@@ -10,4 +10,5 @@ function logout() {
         window.alert("Error: " + errorMessage);
     });
 
+
 }

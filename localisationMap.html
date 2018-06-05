@@ -40,9 +40,11 @@
                     lat: position.coords.latitude,
                     lng: position.coords.longitude
                 };
+                var username = firebase.auth().currentUser.username;
+
 
                 infoWindow.setPosition(pos);
-                infoWindow.setContent('Location found.');
+                infoWindow.setContent('Location found of user: ' + username);
                 map.setCenter(pos);
             }, function() {
                 handleLocationError(true, infoWindow, map.getCenter());

@@ -1,4 +1,9 @@
 
+//Firebase information
+var firebaseRef = firebase.database().ref();
+var firebaseUserRef = firebase.database().ref().users.topScore;
+var firebaseOldScore = 0;
+
 // etat de game over
 var EndState = State.extend({
 
@@ -9,6 +14,18 @@ var EndState = State.extend({
 
         // recupere le score du joueur
         this.score = game.stateVars.score;
+
+        //Verify that the score is greater than previous score
+        firebaseUserRef.on('value', function(snapshot){
+            firebaseOldScore = snapshot;
+        });
+
+        if(this.score > firebaseOldScore){
+            //Adds score to user
+            firebaseRef.child("users").child(userId).set({
+                topScore: this.score
+            });
+        }
 
         // musique specifique au game over un peu glauque parce qu'on est mort
         gameSound = document.getElementById("gameOver");
