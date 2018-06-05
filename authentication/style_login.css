@@ -18,7 +18,15 @@ input, button {
   text-align: center;
 }
 
-.main-div, .loggedin-div, .createAccountDiv, .errorDiv {
+.errorDiv {
+    width: 25%;
+    margin: 0px auto;
+    margin-top: 35px;
+    padding: 20px;
+    font-family: Trebuchet MS;
+}
+
+.main-div, .loggedin-div, .createAccountDiv {
     width: 25%;
     margin: 0px auto;
     margin-top: 200px;
