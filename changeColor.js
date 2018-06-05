@@ -5,6 +5,9 @@ function changeColor(a){
 }
 
 function changeColorTheme(){
+    if (localStorage.getItem("color") == null){
+        localStorage.setItem("color", "styles/backgroundBlue.css");
+    }
     var cssLink = document.getElementById("colorCSS");
     cssLink.setAttribute("href", localStorage.getItem("color"));
     window.reload();
