@@ -11,7 +11,7 @@ function changeColorTheme(){
 
     var cssString = localStorage.getItem("color");
     cssString = cssString.replace("background", "login");
-    cssString = cssString.replace("styles", "authentication");
+    cssString = cssString.replace("styles/", "");
     alert(cssString);
 
     var cssLink = document.getElementById("colorCSS");
