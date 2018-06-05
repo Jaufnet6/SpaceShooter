@@ -1,36 +1,36 @@
 <html>
 <head>
-  <title>SPACESHOOTERS - GOODBYE !</title>
-  <link rel="stylesheet" href="style_login.css"/>
-  <link rel="stylesheet" href="loginGrey.css" id="colorCSS"/>
+    <title>SPACESHOOTERS - GOODBYE !</title>
+    <link rel="stylesheet" href="style_login.css"/>
+    <link rel="stylesheet" href="loginGrey.css" id="colorCSS"/>
 
-  <!-- changing colors -->
-  <script src="changeColorLogin.js"></script>
+    <!-- changing colors -->
+    <script src="changeColorLogin.js"></script>
 </head>
 
 <body onload="changeColorTheme()">
 
-  <div class="loggedin-div" id="loggedin_div_id">
+<div class="loggedin-div" id="loggedin_div_id">
     <h2>Logged In user</h2>
     <p>Welcome to Spaceshooter. You are logged in.</p>
 
     <button onclick="logout()">Logout</button>
-  </div>
+</div>
 
-  <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
-  <script>
+<script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
+<script>
     // Initialize Firebase
     var config = {
-      apiKey: "AIzaSyClmnMKDoyAKU7yEWJc21elBl663GsWGhg",
-      authDomain: "spaceshooter-ria.firebaseapp.com",
-      databaseURL: "https://spaceshooter-ria.firebaseio.com",
-      projectId: "spaceshooter-ria",
-      storageBucket: "spaceshooter-ria.appspot.com",
-      messagingSenderId: "778489924106"
+        apiKey: "AIzaSyCmA6Y341KdSyqOxkSo5D6NcCyPDCR1jYM",
+        authDomain: "spaceshooter-ria.firebaseapp.com",
+        databaseURL: "https://spaceshooter-ria.firebaseio.com",
+        projectId: "spaceshooter-ria",
+        storageBucket: "spaceshooter-ria.appspot.com",
+        messagingSenderId: "778489924106"
     };
     firebase.initializeApp(config);
-  </script>
-  <script src="logout.js"></script>
+</script>
+<script src="logout.js"></script>
 
 </body>
 
