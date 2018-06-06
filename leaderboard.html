@@ -41,20 +41,41 @@
 </nav>
 <body onload="changeColorTheme()">
 <script>
-    var counter = 1;
+    var arr = new Array();
+    var counter = 0;
+
     firebase.database().ref('users').orderByChild('topScore').limitToLast(10).once('value').then(function (snapshot) {
         snapshot.forEach(function (childSnapshot) {
             var username = childSnapshot.val().username;
             var topScore = childSnapshot.val().topScore;
 
-
-            $("#tableScore").append("<tr><th class='center-align'>" + counter + '</th><th class="center-align">' + username + '</th><th class="center-align">' + topScore + '</th></tr>');
+            var lineArr = [username, topScore];
+            arr[counter] = lineArr;
             counter += 1;
+
+
+            // $("#tableScore").append("<tr><th class='center-align'>" + counter + '</th><th class="center-align">' + username + '</th><th class="center-align">' + topScore + '</th></tr>');
+            // counter += 1;
         });
+
+    }).then(function () {
+        arr.reverse();
+        for (var i = 0; i < arr.length; i++) {
+            $("#tableScore").append("<tr>");
+            for (var j = -1; j < arr[0].length; j++) {
+                if (j == -1) {
+                    $("#tableScore").append("<th class='center-align'>" + (i + 1) + "</th>");
+                }
+                else {
+                    $("#tableScore").append("<th class='center-align'>" + arr[i][j] + "</th>");
+                }
+            }
+            $("#tableScore").append("</tr>");
+        }
+
     });
 
 </script>
-<script> getAllScore()</script>
 <aside class="container">
     <h3>Here is the LeaderBoard !</h3>
     <hr/>
