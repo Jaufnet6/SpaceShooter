@@ -209,7 +209,6 @@
         document.getElementById("okProfileButton").style.display = "none";
         document.getElementById("cancelProfileButton").style.display = "none";
         //Reload old elements from DB (username/email/profile)
-
         //Firebase information
         var userID =  firebase.auth().currentUser.uid;
         var firebaseUserRef = firebase.database().ref('users/' + userID);

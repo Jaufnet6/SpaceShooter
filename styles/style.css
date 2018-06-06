@@ -142,6 +142,21 @@ td, th{
     text-align: left;
 }
 
+#leaderBody {
+    margin-top: 5px;
+}
+
+.center-align {
+    font-variant: small-caps;
+    border-radius: 35px;
+    font-size: 18px;
+}
+
+.tableScore{
+    border-spacing: 7px;
+    border-collapse: separate;
+}
+
 th{
     font-variant: small-caps;
     font-size: 25px;
@@ -150,6 +165,11 @@ th{
 
 nav {
     font-family: Trebuchet MS;
+}
+
+h1 {
+    text-shadow: 2px 1px #000000;
+    font-variant: small-caps;
 }
 
 nav ul {
