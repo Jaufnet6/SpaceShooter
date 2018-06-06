@@ -244,6 +244,10 @@ canvas {
     border-radius: 10px;
 }
 
+img {
+    overflow: hidden;
+}
+
 .profileBody{
     font-family: Trebuchet MS;
     font-size: 18px;
