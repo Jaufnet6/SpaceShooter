@@ -9,6 +9,8 @@ var EndState = State.extend({
         // recupere le score du joueur
         this.score = game.stateVars.score;
 
+
+
         // musique specifique au game over un peu glauque parce qu'on est mort
         gameSound = document.getElementById("gameOver");
         gameSound.loop = true;

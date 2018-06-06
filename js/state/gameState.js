@@ -283,6 +283,40 @@ var GameState = State.extend({
                     // et selon le niveau de vague des aliens
                     score += (51-nbAlien)*lvl;
 
+                    // Augmente la vitesse selon le niveau de vague du joueur
+                    switch (lvl) {
+                        case 1: {
+                            lvFrame = 45;
+
+                            break;
+                        }
+                        case 2: {
+                            lvFrame = 40;
+
+                            break;
+                        }
+                        case 3: {
+                            lvFrame = 35;
+
+                            break;
+                        }
+                        case 4: {
+                            lvFrame = 30;
+
+                            break;
+                        }
+                        case 5: {
+                            lvFrame = 25;
+
+                            break;
+                        }
+                        case 6: {
+                            lvFrame = 20;
+
+                            break;
+                        }
+                    }
+
                     // augmente la vitesse en fonction du nombre d'alien restant
                     // dans le tableau actuel
                     switch (nbAlien) {
@@ -318,39 +352,7 @@ var GameState = State.extend({
                         }
                     }
 
-                    // Augmente la vitesse selon le niveau de vague du joueur
-                    switch (lvl) {
-                        case 1: {
-                            lvFrame = 45;
 
-                            break;
-                        }
-                        case 2: {
-                            lvFrame = 35;
-
-                            break;
-                        }
-                        case 3: {
-                            lvFrame = 30;
-
-                            break;
-                        }
-                        case 4: {
-                            lvFrame = 25;
-
-                            break;
-                        }
-                        case 5: {
-                            lvFrame = 18;
-
-                            break;
-                        }
-                        case 6: {
-                            lvFrame =15;
-
-                            break;
-                        }
-                    }
                 }
             }
         }
