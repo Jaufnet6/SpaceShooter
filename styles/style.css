@@ -142,6 +142,10 @@ td, th{
     text-align: left;
 }
 
+.leaderBody {
+    margin-top: 5px;
+}
+
 th{
     font-variant: small-caps;
     font-size: 25px;
