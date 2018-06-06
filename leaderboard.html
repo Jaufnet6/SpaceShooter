@@ -64,10 +64,10 @@
             $("#tableScore").append("<tr>");
             for (var j = -1; j < arr[0].length; j++) {
                 if (j == -1) {
-                    $("#tableScore").append("<th class='center-align'>" + (i + 1) + "</th>");
+                    $("#tableScore").append("<td class='center-align'>" + (i + 1) + "</td>");
                 }
                 else {
-                    $("#tableScore").append("<th class='center-align'>" + arr[i][j] + "</th>");
+                    $("#tableScore").append("<td class='center-align'>" + arr[i][j] + "</td>");
                 }
             }
             $("#tableScore").append("</tr>");
@@ -92,7 +92,7 @@
 <mid class="container">
     <h1>LeaderBoard</h1>
     <hr/>
-    <table>
+    <table class="tableScore">
         <thead>
         <tr>
             <th>Rank</th>

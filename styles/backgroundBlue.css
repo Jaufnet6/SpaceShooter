@@ -45,12 +45,12 @@ tr:nth-child(even) {
     color: #fff;
 }
 
-#leaderBody{
+#tableScore{
     background: #3B5C8F;
 }
 
 .center-align {
-    background: #6666ff;
+    background: #357bea;
 }
 
 canvas {
