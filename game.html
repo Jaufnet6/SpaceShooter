@@ -83,5 +83,38 @@
         <img src="images/PC_sbar.png" height="82" width="128"/>
     </section>
 </div>
+<script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
+<script>
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyCmA6Y341KdSyqOxkSo5D6NcCyPDCR1jYM",
+        authDomain: "spaceshooter-ria.firebaseapp.com",
+        databaseURL: "https://spaceshooter-ria.firebaseio.com",
+        projectId: "spaceshooter-ria",
+        storageBucket: "spaceshooter-ria.appspot.com",
+        messagingSenderId: "778489924106"
+    };
+    firebase.initializeApp(config);
+</script>
+<script>
+    function addScore(score){
+        //Firebase information
+        var userID =  firebase.auth().currentUser.uid;
+        var firebaseUserRef = firebase.database().ref('users/' + userID);
+
+        firebaseUserRef.once('value').then(function (snapshot){
+            var firebaseOldScore = snapshot. val().topScore;
+
+            //Adds score to user
+            if (score > firebaseOldScore) {
+                firebaseUserRef.child("topScore").set(score);
+            }
+        });
+
+    }
+
+
+</script>
+
 </body>
 </html>

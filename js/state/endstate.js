@@ -1,4 +1,3 @@
-
 // etat de game over
 var EndState = State.extend({
 
@@ -28,9 +27,7 @@ var EndState = State.extend({
                 gameSound.pause();
                 this.game.nextState = States.MENU;
             }
-
     },
-
 
     // genere le texte du game over
 
@@ -40,6 +37,7 @@ var EndState = State.extend({
         ctx.clearAll();
 
         if (gameOver == true){
+            addScore(score);
             ctx.vectorText("Your score " + score, 3, null, 300);
             ctx.vectorText("Press enter to begin a new game", 2, null, 200);
             ctx.vectorText("Thank you for playing", 3, null, 100);

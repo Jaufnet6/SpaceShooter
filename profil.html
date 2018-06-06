@@ -3,8 +3,9 @@
 <head>
     <link rel="stylesheet" href="styles/style.css" type="text/css">
     <link rel="stylesheet" href="styles/backgroundGrey.css" type="text/css" id="colorCSS">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+    <meta charset="UTF-8">
 
     <!-- changing colors -->
     <script src="changeColor.js"></script>
@@ -17,7 +18,7 @@
         <li><a href="game.html">Play</a></li>
         <li><a href="leaderboard.html">Leaderboard</a></li>
         <li><a href="profil.html">My account</a></li>
-        <li><a href="index.html">Log out</a></li>
+        <li><a href="authentication/logout.html">Log out</a></li>
 
         <select id="chooseColor" onchange="changeColor(this)">
             <option value="styles/backgroundGreen.css">Military green</option>
@@ -26,8 +27,6 @@
         </select>
     </ul>
 
-
-    
 </nav>
 <body onload="changeColorTheme()">
 <div id="profileTitle" class="container">
@@ -67,22 +66,19 @@
             </td>
         </tr>
     </table>
-
-    <button class="profileButton" id="WhereAMIButton" onclick="window.open('localisationMap.html');" >Where am I ?</button>
-
+    <div class="center">
+        <button class="profileButton" onclick="window.open('localisationMap.html')" id="WhereAMIButton">Where am I ?</button>
+    </div>
     <div class="center">
         <button class="profileButton" id="editProfileButton" onclick="editProfile()">Edit profile</button>
         <button class="profileButton" id="okProfileButton" style="display: none" onclick="okProfile()">OK</button>
         <button class="profileButton" id="cancelProfileButton" style="display: none" onclick="cancelProfile()">Cancel</button>
-
     </div>
-
 </main>
 </body>
 </html>
 
 <script>
-
     var imageLoader;
     var dropbox;
 

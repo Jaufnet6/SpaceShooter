@@ -2,10 +2,13 @@
 <head>
     <title>SPACESHOOTERS - LOGIN</title>
     <link rel="stylesheet" href="style_login.css"/>
-    <link rel="stylesheet" href="loginGrey.css"/>
+    <link rel="stylesheet" href="loginGrey.css" id="colorCSS"/>
+
+    <!-- changing colors -->
+    <script src="changeColorLogin.js"></script>
 </head>
 
-<body>
+<body onload="changeColorTheme()">
 
 <div class="main-div" id="main_div_id">
     <h2>Spaceshooter Login</h2>
@@ -18,6 +21,7 @@
 
 <div class="createAccountDiv" id="createAccountDivId">
     <h2>Spaceshooter Account Creation</h2>
+    <input type="text" placeholder="Username..." id="usernameCreation_Field"/>
     <input type="email" placeholder="Email..." id="emailCreation_field"/>
     <input type="password" placeholder="Password..." id="passwordCreation_field"/>
     <input type="password" placeholder="Confirm Password..." id="passwordCreation2_field"/>
@@ -34,7 +38,7 @@
 <script>
     // Initialize Firebase
     var config = {
-        apiKey: "AIzaSyClmnMKDoyAKU7yEWJc21elBl663GsWGhg",
+        apiKey: "AIzaSyCmA6Y341KdSyqOxkSo5D6NcCyPDCR1jYM",
         authDomain: "spaceshooter-ria.firebaseapp.com",
         databaseURL: "https://spaceshooter-ria.firebaseio.com",
         projectId: "spaceshooter-ria",

@@ -6,9 +6,14 @@ function changeColor(a){
 
 function changeColorTheme(){
     if (localStorage.getItem("color") == null){
-        localStorage.setItem("color", "styles/backgroundBlue.css");
+        localStorage.setItem("color", "authentication/loginBlue.css");
     }
+
+    var cssString = localStorage.getItem("color");
+    cssString = cssString.replace("background", "login");
+    cssString = cssString.replace("styles/", "");
+
     var cssLink = document.getElementById("colorCSS");
-    cssLink.setAttribute("href", localStorage.getItem("color"));
+    cssLink.setAttribute("href", cssString);
     window.reload();
 }
