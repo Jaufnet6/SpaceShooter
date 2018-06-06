@@ -45,8 +45,12 @@ tr:nth-child(even) {
     color: #fff;
 }
 
-.leaderBody {
+#leaderBody {
     background: #009933;
+}
+
+.center-align {
+    background: #00cc00;
 }
 
 canvas {

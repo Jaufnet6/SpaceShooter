@@ -48,7 +48,7 @@
             var topScore = childSnapshot.val().topScore;
 
 
-            $("#tableScore").append("<tr><th class='center-align'>" + counter + '</th><th class="center-align">' + username + '</th><th class="center-align">' + topScore + '</th></tr>');
+            $("#leaderBody").append("<tr><td class='center-align'>" + counter + '</td><td class="center-align">' + username + '</td><td class="center-align">' + topScore + '</td></tr>');
             counter += 1;
         });
     });
@@ -71,7 +71,7 @@
 <mid class="container">
     <h1>LeaderBoard</h1>
     <hr/>
-    <table>
+    <table class="tableScore">
         <thead>
         <tr>
             <th>Rank</th>
@@ -79,7 +79,7 @@
             <th>Score</th>
         </tr>
         </thead>
-        <tbody class="leaderBody">
+        <tbody id="leaderBody">
 
         </tbody>
     </table>
