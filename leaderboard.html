@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en">
-<header>
+<head>
     <link rel="stylesheet" href="styles/style.css" type="text/css">
     <link rel="stylesheet" href="styles/backgroundGrey.css" type="text/css" id="colorCSS">
     <meta charset="UTF-8">
@@ -8,8 +8,23 @@
 
     <!-- changing colors -->
     <script src="changeColor.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-</header>
+    <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyCmA6Y341KdSyqOxkSo5D6NcCyPDCR1jYM",
+            authDomain: "spaceshooter-ria.firebaseapp.com",
+            databaseURL: "https://spaceshooter-ria.firebaseio.com",
+            projectId: "spaceshooter-ria",
+            storageBucket: "spaceshooter-ria.appspot.com",
+            messagingSenderId: "778489924106"
+        };
+        firebase.initializeApp(config);
+    </script>
+
+</head>
 <nav>
     <ul>
         <li><a href="game.html">Play</a></li>
@@ -25,6 +40,21 @@
     </ul>
 </nav>
 <body onload="changeColorTheme()">
+<script>
+    var counter = 1;
+    firebase.database().ref('users').orderByChild('topScore').limitToLast(10).once('value').then(function (snapshot) {
+        snapshot.forEach(function (childSnapshot) {
+            var username = childSnapshot.val().username;
+            var topScore = childSnapshot.val().topScore;
+
+
+            $("#tableScore").append("<tr><th class='center-align'>" + counter + '</th><th class="center-align">' + username + '</th><th class="center-align">' + topScore + '</th></tr>');
+            counter += 1;
+        });
+    });
+
+</script>
+<script> getAllScore()</script>
 <aside class="container">
     <h3>Here is the LeaderBoard !</h3>
     <hr/>
@@ -49,15 +79,11 @@
             <th>Score</th>
         </tr>
         </thead>
-        <tbody>
+        <tbody id="tableScore">
 
         </tbody>
     </table>
-    <!--<script>
-        var tablescore = new Array();
-        tablescore.sort();
 
-    </script>-->
 </mid>
 
 </body>

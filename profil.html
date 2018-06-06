@@ -10,6 +10,20 @@
     <!-- changing colors -->
     <script src="changeColor.js"></script>
 
+    <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyCmA6Y341KdSyqOxkSo5D6NcCyPDCR1jYM",
+            authDomain: "spaceshooter-ria.firebaseapp.com",
+            databaseURL: "https://spaceshooter-ria.firebaseio.com",
+            projectId: "spaceshooter-ria",
+            storageBucket: "spaceshooter-ria.appspot.com",
+            messagingSenderId: "778489924106"
+        };
+        firebase.initializeApp(config);
+    </script>
+
     <title>SPACESHOOTERS - PROFILE</title>
 
 </head>
@@ -29,6 +43,31 @@
 
 </nav>
 <body onload="changeColorTheme()">
+<script>
+    firebase.auth().onAuthStateChanged(function (user)
+    {
+        if (user)
+        {
+            //Firebase information
+            var userID =  user.uid;
+            var firebaseUserRef = firebase.database().ref('users/' + userID);
+
+            firebaseUserRef.once('value').then(function (snapshot){
+                var firebaseScore = snapshot.val().topScore;
+                var firebaseUsername = snapshot.val().username;
+                var firebaseEmail = snapshot.val().email;
+                document.getElementById("scoreID").value = firebaseScore;
+                document.getElementById("username").value = firebaseUsername;
+                document.getElementById("email").value = firebaseEmail;
+            });
+
+        }
+        else
+        {
+            console.log('no user');
+        }
+    });
+</script>
 <div id="profileTitle" class="container">
     <h2 class="center">My Account</h2>
 </div>
@@ -62,7 +101,7 @@
                 <div class="profileBody">Best score</div>
             </td>
             <td class="tdProfile">
-                <div class="profileBody">GET_SCORE</div>
+                <input id="scoreID" disabled placeholder="Top Score">
             </td>
         </tr>
     </table>
@@ -128,7 +167,6 @@
         dragNDrop();
         //Input are now editable
         document.getElementById("username").disabled = false;
-        document.getElementById("email").disabled = false;
         //Edit button disappears
         document.getElementById("editProfileButton").style.display = "none";
         //OK and cancel buttons appear
@@ -141,13 +179,20 @@
         removeDragNDrop();
         //Inputs are not editable anymore
         document.getElementById("username").disabled = true;
-        document.getElementById("email").disabled = true;
         //Edit button reappears
         document.getElementById("editProfileButton").style.display = "inline";
         //OK and cancel buttons disappear
         document.getElementById("okProfileButton").style.display = "none";
         document.getElementById("cancelProfileButton").style.display = "none";
         //DB access to update username/email/profile picture
+
+        //Get userInput
+        var newUsername = document.getElementById("username").value;
+        //Firebase information
+        var userID =  firebase.auth().currentUser.uid;
+        var firebaseUserRef = firebase.database().ref('users/' + userID);
+
+        firebaseUserRef.child("username").set(newUsername);
 
     }
 
@@ -164,6 +209,16 @@
         document.getElementById("okProfileButton").style.display = "none";
         document.getElementById("cancelProfileButton").style.display = "none";
         //Reload old elements from DB (username/email/profile)
+
+        //Firebase information
+        var userID =  firebase.auth().currentUser.uid;
+        var firebaseUserRef = firebase.database().ref('users/' + userID);
+
+        firebaseUserRef.once('value').then(function (snapshot){
+            var oldUsername = snapshot. val().username;
+            document.getElementById("username").value = oldUsername;
+        });
+
 
     }
 </script>
