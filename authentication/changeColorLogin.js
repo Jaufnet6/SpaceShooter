@@ -1,9 +1,11 @@
+//Get color and call method to change theme
 function changeColor(a){
     var newColor = a.value;
     localStorage.setItem("color", newColor);
     changeColorTheme();
 }
 
+//Change color theme according to localStorage
 function changeColorTheme(){
     if (localStorage.getItem("color") == null){
         localStorage.setItem("color", "authentication/loginBlue.css");

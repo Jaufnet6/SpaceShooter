@@ -1,14 +1,14 @@
 // menu avant le jeu,
 var MenuState = State.extend({
 
-    init: function(game) {
+    init: function (game) {
         //constructeur
         this._super(game);
 
     },
 
     // gere l'action utilisateur
-    handleInputs: function(input) {
+    handleInputs: function (input) {
         if (input.isPressed("spacebar")) {
             this.game.nextState = States.GAME;
         }
@@ -18,12 +18,9 @@ var MenuState = State.extend({
     render: function (ctx) {
 
         ctx.clearAll();
-
-        ctx.vectorText("Spaceshooters", 6, null,180)
+        ctx.vectorText("Spaceshooters", 6, null, 180)
         ctx.vectorText("push space to play", 2, null, 260);
 
 
     }
-
-
-    });
+});

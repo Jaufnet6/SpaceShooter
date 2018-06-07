@@ -1,9 +1,7 @@
-
 // classe realisee par maxwihlborg afin de dessiner des lettre et chiffres dans le canevas a l'aide de polygon
 // nous avons suivi son tutoriel sur youtube afin de realiser cette classe
 
 var Canvas = Class.extend({
-
 
 	init: function(width, height) {
 
@@ -12,7 +10,6 @@ var Canvas = Class.extend({
 		this.canvas = document.createElement("canvas");
 		this.canvas.width = width;
 		this.canvas.height = height;
-
 
 		this.ctx = (function(ctx) {
 
@@ -23,9 +20,7 @@ var Canvas = Class.extend({
 			ctx.ZCODE = "0".charCodeAt(0);
 			ctx.SCODE = " ".charCodeAt(0);
 
-
 			ctx.drawPolygon = function(p, x, y) {
-
 
 				p = p.points;
 
@@ -37,7 +32,6 @@ var Canvas = Class.extend({
 				}
 				this.stroke();
 			};
-
 
 			ctx.vectorText = function(text, s, x, y, offset) {
 				// passe le texte en majuscule
@@ -100,7 +94,6 @@ var Canvas = Class.extend({
 				this.clearRect(0, 0, this.width, this.height);
 			};
 
-
 			// dessine le sprite a la position x ou y
             ctx.drawSprite = function(sp, x, y) {
 
@@ -112,8 +105,6 @@ var Canvas = Class.extend({
                 this.fillStyle = bullet.color;
                 this.fillRect(bullet.x, bullet.y, bullet.width, bullet.height);
             };
-
-
 
 			// retourne les image 2d
 			return ctx;

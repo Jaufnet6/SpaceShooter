@@ -18,7 +18,6 @@ var
 
 var GameState = State.extend({
 
-
     //initialise le score et les vies pour demarrer le jeu
     init: function (game) {
         this._super(game);
@@ -46,8 +45,6 @@ var GameState = State.extend({
         killed = new SoundPool(10);
         killed.init("invaderKilled");
 
-
-
         // dimensions du canevas
         canvasWidth = game.canvas.ctx.width;
         canvasHeight = game.canvas.ctx.height;
@@ -67,7 +64,6 @@ var GameState = State.extend({
             visible:false
         };
 
-
         // initialise un tableau de boules
         bullets = [];
         // creation des villes
@@ -76,7 +72,6 @@ var GameState = State.extend({
             ctx: 	null,
             y: tank.y - (30 + ciSprite.h),
             h: ciSprite.h,
-
 
             //Creation du canevas
             init: function() {
@@ -176,15 +171,12 @@ var GameState = State.extend({
             tank.x += 4;
         }
 
-
         // Permet de creer une ball et la tire
         // Quand on appuie sur la touche espace
         if (input.isPressed("spacebar")) {
             bullets.push(new Bullet(tank.x + 10, tank.y, -8, 2, 6, "#fff"));
             shoot.get();
         }
-
-
     },
 
 
@@ -277,7 +269,6 @@ var GameState = State.extend({
                     i--;
                     nbBullet--;
 
-
                     //les points augmentent
                     // selon les aliens restant
                     // et selon le niveau de vague des aliens
@@ -322,37 +313,29 @@ var GameState = State.extend({
                     switch (nbAlien) {
                         case 45: {
                             lvFrame = lvFrame - 1;
-
                             break;
                         }
                         case 40: {
                             lvFrame = lvFrame - 3;
-
                             break;
                         }
                         case 30: {
                             lvFrame = lvFrame - 5;
-
                             break;
                         }
                         case 20: {
                             lvFrame = lvFrame - 7;
-
                             break;
                         }
                         case 10: {
                             lvFrame = lvFrame - 9;
-
                             break;
                         }
                         case 5: {
                             lvFrame = lvFrame - 11;
-
                             break;
                         }
                     }
-
-
                 }
             }
         }
@@ -371,7 +354,6 @@ var GameState = State.extend({
             // creation de la balle
             bullets.push(new Bullet(a.x + a.w*0.5, a.y + a.h, 4, 2, 4, "#fff"));
         }
-
 
         // met a jour les aliens sur chaque frames
         if (frames % lvFrame === 0) {
@@ -422,7 +404,6 @@ var GameState = State.extend({
                 lvl++;
 
             }
-
         }
     },
 
@@ -469,8 +450,6 @@ var GameState = State.extend({
 
             contx.vectorText("Game Over", 4, null, null);
             contx.clearRect(tank.x,tank.y, taSprite.w, taSprite.h);
-
-
         }
     }
 
@@ -483,7 +462,6 @@ function SoundPool(maxSize) {
     var pool = [];
     this.pool = pool;
     var currSound = 0;
-
 
     // permet d'attribuer une fonction a un son
     this.init = function(object) {
@@ -535,9 +513,3 @@ function SoundPool(maxSize) {
         currSound = (currSound + 1) % size;
     };
 }
-
-
-
-
-
-

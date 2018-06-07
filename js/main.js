@@ -1,5 +1,3 @@
-
-
 // etat du jeu
 var States = {
     NO_CHANGE: 0,
@@ -8,12 +6,10 @@ var States = {
     END: 3
 }
 
-
 var Game = Class.extend({
 
     // constructeur
     init: function() {
-
 
         //declaration du canvas
         this.canvas = new Canvas(504, 600);
@@ -47,9 +43,6 @@ var Game = Class.extend({
 
         });
 
-
-
-
         //declare l'etat courant et le score a 0
         this.currentState = null;
         this.stateVars = {
@@ -57,7 +50,6 @@ var Game = Class.extend({
         }
         this.nextState = States.MENU;
     },
-
 
     run: function() {
         var self = this;
@@ -86,6 +78,4 @@ var Game = Class.extend({
             self.currentState.render(self.canvas.ctx);
         });
     }
-
-
 });

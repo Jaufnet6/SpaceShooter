@@ -6,14 +6,10 @@ var State = Class.extend({
         
     },
 
-
     // retourne 0 car définie plus tard
-
     handleInputs: function(input) {
         return void 0;
     },
-
-
 
     update: function() {
         return void 0;

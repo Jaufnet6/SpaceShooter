@@ -2,7 +2,6 @@
 // classe realisee par maxwihlborg afin de dessiner des lettre et chiffres dans le canevas a l'aide de polygon
 
 var Points = {
-
 	
 	LETTERS: [
 		[0,6,0,2,2,0,4,2,4,4,0,4,4,4,4,6],                 //A

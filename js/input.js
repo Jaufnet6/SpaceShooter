@@ -1,4 +1,3 @@
-
 // class objet permettant de gere les actions de l'utilisateur
 
 var InputHandeler = Class.extend({
@@ -6,11 +5,9 @@ var InputHandeler = Class.extend({
     //constructeur
     init: function(keys) {
 
-
         this.keys = {};
         this.down = {};
         this.pressed = {};
-
 
         for (key in keys) {
             var code = keys[key];
