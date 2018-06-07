@@ -507,8 +507,6 @@ function SoundPool(maxSize) {
                 break;
             }
         }
-
-
     };
 
     //lance les son
