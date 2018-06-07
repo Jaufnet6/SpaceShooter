@@ -321,32 +321,32 @@ var GameState = State.extend({
                     // dans le tableau actuel
                     switch (nbAlien) {
                         case 45: {
-                            lvFrame = lvFrame - 1;
+                            lvFrame = lvFrame - 2;
 
                             break;
                         }
                         case 40: {
-                            lvFrame = lvFrame - 3;
+                            lvFrame = lvFrame - 4;
 
                             break;
                         }
                         case 30: {
-                            lvFrame = lvFrame - 5;
+                            lvFrame = lvFrame - 6;
 
                             break;
                         }
                         case 20: {
-                            lvFrame = lvFrame - 7;
+                            lvFrame = lvFrame - 8;
 
                             break;
                         }
                         case 10: {
-                            lvFrame = lvFrame - 9;
+                            lvFrame = lvFrame - 10;
 
                             break;
                         }
                         case 5: {
-                            lvFrame = lvFrame - 11;
+                            lvFrame = lvFrame - 12;
 
                             break;
                         }
