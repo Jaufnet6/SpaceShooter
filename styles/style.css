@@ -248,6 +248,10 @@ img {
     overflow: hidden;
 }
 
+#profilePic {
+    border-radius: 10px;
+}
+
 .profileBody{
     font-family: Trebuchet MS;
     font-size: 18px;

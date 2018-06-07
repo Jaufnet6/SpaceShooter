@@ -29,7 +29,7 @@ input, button {
 .main-div, .loggedin-div, .createAccountDiv {
     width: 25%;
     margin: 0px auto;
-    margin-top: 200px;
+    margin-top: 90px;
     padding: 20px;
     font-family: Trebuchet MS;
 }
