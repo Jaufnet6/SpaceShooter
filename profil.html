@@ -73,7 +73,7 @@
 </div>
 <main class="container">
     <div id="uploader" class="center" onclick="$('#filePhoto').click()">
-        <img id="profilePic" class="center" src="images/default-user.png" width="200px"/>
+        <img id="profilePic" class="center" src="images/default-user.png" height="200px"/>
     </div>
     <input type="file" id="filePhoto" disabled>
     <br/>
@@ -209,7 +209,6 @@
         document.getElementById("okProfileButton").style.display = "none";
         document.getElementById("cancelProfileButton").style.display = "none";
         //Reload old elements from DB (username/email/profile)
-
         //Firebase information
         var userID =  firebase.auth().currentUser.uid;
         var firebaseUserRef = firebase.database().ref('users/' + userID);

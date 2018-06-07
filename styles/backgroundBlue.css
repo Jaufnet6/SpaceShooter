@@ -45,6 +45,14 @@ tr:nth-child(even) {
     color: #fff;
 }
 
+#tableScore{
+    background: #3B5C8F;
+}
+
+.center-align {
+    background: #357bea;
+}
+
 canvas {
     background-color: #000066;
 }
